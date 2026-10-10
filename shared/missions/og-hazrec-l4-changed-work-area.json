@@ -1,0 +1,903 @@
+{
+ "schemaVersion": 2,
+ "id": "og-hazrec-l4-changed-work-area",
+ "version": 1,
+ "industry": "oil_gas",
+ "department": "plant_maintenance",
+ "designations": [
+  "og_mech_maint"
+ ],
+ "roleTitleKey": "mission.common.roleTrainee",
+ "designedFor": [
+  "mid",
+  "senior"
+ ],
+ "category": "og_hazard_recognition",
+ "level": 4,
+ "estimatedMinutes": 15,
+ "titleKey": "m.hr4.title",
+ "subtitleKey": "m.hr4.subtitle",
+ "descriptionKey": "m.hr4.description",
+ "briefingKeys": [
+  "m.hr4.briefing.1",
+  "m.hr4.briefing.2"
+ ],
+ "assignmentKeys": {
+  "assignment": "m.hr4.assignment.task",
+  "equipment": "m.hr4.assignment.equipment",
+  "objective": "m.hr4.assignment.objective",
+  "information": "m.hr4.assignment.information"
+ },
+ "learningObjectiveKeys": [
+  "m.hr4.objectives.1",
+  "m.hr4.objectives.2"
+ ],
+ "debriefKeys": {
+  "success": "m.hr4.debrief.success",
+  "critical": "m.hr4.debrief.critical",
+  "failed": "m.hr4.debrief.failed"
+ },
+ "ruleSet": {
+  "status": "provisional",
+  "noticeKey": "mission.common.provisionalNotice"
+ },
+ "contentReview": {
+  "status": "draft_unreviewed",
+  "translationStatus": "demonstration_only",
+  "lastModified": "2026-10-09"
+ },
+ "referenceIds": [
+  "REF-OISD-STD-154",
+  "REF-HSE-HSG253"
+ ],
+ "safetyReferences": [],
+ "safetyReferencesNoteKey": "mission.common.noReviewedReferences",
+ "prerequisites": {
+  "missions": []
+ },
+ "scene": {
+  "id": "complex",
+  "site": "tank_farm",
+  "time": "overcast",
+  "spawn": {
+   "x": 0,
+   "z": -23,
+   "heading": 0
+  },
+  "workPoint": {
+   "x": 0,
+   "z": -3,
+   "heading": 0
+  },
+  "cinematic": {
+   "dayKey": "chapter.og_hazard_recognition.4",
+   "locationKey": "m.hr4.location",
+   "titleKey": "m.hr4.title"
+  },
+  "restrictedZones": [],
+  "environmentIndicators": [],
+  "props": [
+   {
+    "type": "pipe",
+    "x": 0.5,
+    "z": 8.8,
+    "heading": 0,
+    "params": {
+     "len": 12,
+     "y": 1.0,
+     "d": 0.34,
+     "color": "#8a96a8"
+    }
+   },
+   {
+    "type": "pipe",
+    "x": 0.5,
+    "z": 8.8,
+    "heading": 0,
+    "params": {
+     "len": 12,
+     "y": 1.8,
+     "d": 0.26,
+     "color": "#ffc23d"
+    }
+   },
+   {
+    "type": "tank",
+    "x": 9.5,
+    "z": 13.5,
+    "heading": 0,
+    "params": {
+     "tag": "TK-4",
+     "r": 2.2,
+     "h": 6
+    }
+   },
+   {
+    "type": "sign",
+    "x": -4.5,
+    "z": -1.5,
+    "heading": 0,
+    "params": {
+     "kind": "mandatory",
+     "text": "world.sign.ppe"
+    }
+   },
+   {
+    "id": "valve_mv7",
+    "type": "valve",
+    "x": -1.0,
+    "z": 4.0,
+    "heading": 0,
+    "params": {
+     "tag": "MV-7"
+    },
+    "state": "open"
+   },
+   {
+    "id": "scaffold_new",
+    "type": "scaffold",
+    "x": 3.6,
+    "z": 3.6,
+    "heading": 0,
+    "params": {
+     "tagColor": "#e8423f"
+    }
+   },
+   {
+    "id": "hose_new",
+    "type": "hose",
+    "x": -1.5,
+    "z": 1.4,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "id": "drain_open",
+    "type": "drain",
+    "x": -4.2,
+    "z": 5.5,
+    "heading": 0,
+    "params": {},
+    "state": "open"
+   },
+   {
+    "id": "assessment",
+    "type": "stand",
+    "x": 2.5,
+    "z": -2.8,
+    "heading": 0,
+    "params": {
+     "title": "m.hr4.prop.assessment.1"
+    }
+   }
+  ],
+  "briefingNpc": "supervisor"
+ },
+ "briefingPhase": {
+  "allowedEvents": [
+   "world_entered",
+   "zone_entered",
+   "npc_interacted",
+   "checklist_opened",
+   "hint_requested",
+   "object_inspected"
+  ]
+ },
+ "zones": [
+  {
+   "id": "zone_manifold",
+   "nameKey": "m.hr4.zone.zone_manifold",
+   "minX": -6,
+   "maxX": 7,
+   "minZ": -1,
+   "maxZ": 9
+  }
+ ],
+ "npcs": [
+  {
+   "id": "supervisor",
+   "nameKey": "npc.supervisor.name",
+   "roleKey": "npc.supervisor.role",
+   "portrait": "supervisor",
+   "x": -2.5,
+   "z": -12,
+   "heading": 180,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "meet",
+     "when": {
+      "notCompleted": [
+       "meet_supervisor"
+      ]
+     }
+    },
+    {
+     "dialogue": "revisit"
+    }
+   ]
+  },
+  {
+   "id": "contractor",
+   "nameKey": "npc.contractor.name",
+   "roleKey": "npc.contractor.role",
+   "portrait": "contractor",
+   "x": 4.8,
+   "z": 6.2,
+   "heading": 225,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "crew",
+     "when": {
+      "notCompleted": [
+       "talk_crew"
+      ]
+     }
+    },
+    {
+     "dialogue": "crew"
+    }
+   ],
+   "hiddenUntil": "inspect_valve"
+  }
+ ],
+ "dialogues": {
+  "meet": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr4.dlg.meet.1",
+    "mood": "friendly"
+   },
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr4.dlg.meet.2",
+    "mood": "neutral"
+   }
+  ],
+  "revisit": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr4.dlg.revisit.1",
+    "mood": "neutral"
+   }
+  ],
+  "arrival": [
+   {
+    "speaker": "self",
+    "textKey": "m.hr4.dlg.arrival.1",
+    "mood": "concerned"
+   }
+  ],
+  "crew": [
+   {
+    "speaker": "contractor",
+    "textKey": "m.hr4.dlg.crew.1",
+    "mood": "friendly"
+   },
+   {
+    "speaker": "contractor",
+    "textKey": "m.hr4.dlg.crew.2",
+    "mood": "neutral",
+    "choices": [
+     {
+      "labelKey": "m.hr4.dlg.crew.2c1",
+      "group": "crew",
+      "value": "coordinate"
+     },
+     {
+      "labelKey": "m.hr4.dlg.crew.2c2",
+      "group": "crew",
+      "value": "ignore"
+     }
+    ]
+   }
+  ],
+  "unsafe": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr4.dlg.unsafe.1",
+    "mood": "concerned"
+   }
+  ],
+  "correct": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr4.dlg.correct.1",
+    "mood": "pleased"
+   }
+  ]
+ },
+ "consequencePanels": {
+  "principle": {
+   "titleKey": "m.hr4.comic.title",
+   "panelKeys": [
+    "m.hr4.comic.p1",
+    "m.hr4.comic.p2",
+    "m.hr4.comic.p3"
+   ],
+   "art": [
+    "change",
+    "team",
+    "stop_sign"
+   ]
+  }
+ },
+ "debriefRules": [
+  {
+   "when": {
+    "criticalRule": "carry_on_old_assessment"
+   },
+   "textKey": "m.hr4.debrief.l1"
+  },
+  {
+   "when": {
+    "criticalRule": "move_pressurised_hose"
+   },
+   "textKey": "m.hr4.debrief.l2"
+  },
+  {
+   "when": {
+    "stepCompleted": "see_drain"
+   },
+   "textKey": "m.hr4.debrief.l3"
+  },
+  {
+   "when": {
+    "counterAbove": [
+     "incorrectDecisions",
+     0
+    ]
+   },
+   "textKey": "m.hr4.debrief.l4"
+  },
+  {
+   "when": {
+    "stepCompleted": "decide"
+   },
+   "textKey": "m.hr4.debrief.l5"
+  }
+ ],
+ "interactables": [
+  {
+   "id": "valve_mv7",
+   "nameKey": "m.hr4.obj.valve_mv7.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr4.obj.valve_mv7.d1",
+    "m.hr4.obj.valve_mv7.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "scaffold_new",
+   "nameKey": "m.hr4.obj.scaffold_new.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr4.obj.scaffold_new.d1",
+    "m.hr4.obj.scaffold_new.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": "inspect_valve",
+   "docKind": null
+  },
+  {
+   "id": "hose_new",
+   "nameKey": "m.hr4.obj.hose_new.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr4.obj.hose_new.d1",
+    "m.hr4.obj.hose_new.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": "inspect_valve",
+   "docKind": null
+  },
+  {
+   "id": "drain_open",
+   "nameKey": "m.hr4.obj.drain_open.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr4.obj.drain_open.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": "inspect_valve",
+   "docKind": null
+  },
+  {
+   "id": "assessment",
+   "nameKey": "m.hr4.obj.assessment.name",
+   "type": "station",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.review",
+   "detailKeys": [
+    "m.hr4.obj.assessment.d1"
+   ],
+   "panel": "station",
+   "groups": [
+    "final"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev_other_work",
+   "labelKey": "m.hr4.ev.ev_other_work.label",
+   "statusKey": "m.hr4.ev.ev_other_work.value",
+   "complete": false
+  },
+  {
+   "id": "ev_valve",
+   "labelKey": "m.hr4.ev.ev_valve.label",
+   "statusKey": "m.hr4.ev.ev_valve.value",
+   "complete": true
+  }
+ ],
+ "decisions": [
+  {
+   "value": "pause_review",
+   "labelKey": "m.hr4.grp.final.pause_review",
+   "group": "final"
+  },
+  {
+   "value": "carry_on",
+   "labelKey": "m.hr4.grp.final.carry_on",
+   "group": "final"
+  },
+  {
+   "value": "move_hose",
+   "labelKey": "m.hr4.grp.final.move_hose",
+   "group": "final"
+  },
+  {
+   "value": "coordinate",
+   "labelKey": "m.hr4.grp.crew.coordinate",
+   "group": "crew"
+  },
+  {
+   "value": "ignore",
+   "labelKey": "m.hr4.grp.crew.ignore",
+   "group": "crew"
+  }
+ ],
+ "decisionGroups": [
+  {
+   "id": "final",
+   "promptKey": "m.hr4.grp.final.prompt",
+   "ui": "choice"
+  },
+  {
+   "id": "crew",
+   "promptKey": "m.hr4.grp.crew.prompt",
+   "ui": "choice"
+  }
+ ],
+ "inventory": [],
+ "tools": [
+  {
+   "id": "flashlight",
+   "nameKey": "tool.flashlight.name",
+   "descKey": "tool.flashlight.desc",
+   "allowedTargets": [
+    "valve_mv7",
+    "drain_open"
+   ],
+   "requiresTarget": true
+  },
+  {
+   "id": "radio",
+   "nameKey": "tool.radio.name",
+   "descKey": "tool.radio.desc",
+   "allowedTargets": [
+    "*"
+   ],
+   "requiresTarget": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "meet_supervisor",
+   "titleKey": "story.step.meet.supervisor",
+   "trigger": {
+    "type": "npc_interacted",
+    "target": "supervisor"
+   },
+   "requires": [],
+   "points": 5,
+   "marker": "supervisor",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "meet",
+   "hintKeys": [
+    "story.hint.meet.supervisor"
+   ]
+  },
+  {
+   "id": "briefing",
+   "titleKey": "story.step.briefing",
+   "trigger": {
+    "type": "briefing_acknowledged"
+   },
+   "requires": [
+    "meet_supervisor"
+   ],
+   "points": 5,
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "briefing",
+   "hintKeys": [
+    "story.hint.briefing"
+   ]
+  },
+  {
+   "id": "enter",
+   "titleKey": "m.hr4.step.enter",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_manifold"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 5,
+   "marker": "zone_manifold",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "navigate",
+   "hintKeys": [
+    "m.hr4.hint.enter.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "inspect_valve",
+   "titleKey": "m.hr4.step.inspect_valve",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "valve_mv7"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 10,
+   "marker": "valve_mv7",
+   "concept": "equipment_identification",
+   "outOfOrder": "ignore",
+   "scene": "inspect",
+   "hintKeys": [
+    "m.hr4.hint.inspect_valve.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "see_scaffold",
+   "titleKey": "m.hr4.step.see_scaffold",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "scaffold_new"
+   },
+   "requires": [
+    "inspect_valve"
+   ],
+   "points": 10,
+   "marker": "scaffold_new",
+   "concept": "change_reassessment",
+   "outOfOrder": "ignore",
+   "scene": "change",
+   "hintKeys": [
+    "m.hr4.hint.see_scaffold.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "see_hose",
+   "titleKey": "m.hr4.step.see_hose",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "hose_new"
+   },
+   "requires": [
+    "inspect_valve"
+   ],
+   "points": 10,
+   "marker": "hose_new",
+   "concept": "change_reassessment",
+   "outOfOrder": "ignore",
+   "scene": "change",
+   "hintKeys": [
+    "m.hr4.hint.see_hose.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "see_drain",
+   "titleKey": "m.hr4.step.see_drain",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "drain_open"
+   },
+   "requires": [
+    "inspect_valve"
+   ],
+   "points": 10,
+   "marker": "drain_open",
+   "concept": "hazard_identification",
+   "outOfOrder": "ignore",
+   "scene": "change",
+   "hintKeys": [
+    "m.hr4.hint.see_drain.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "talk_crew",
+   "titleKey": "m.hr4.step.talk_crew",
+   "trigger": {
+    "type": "decision_made",
+    "target": "crew",
+    "value": "coordinate"
+   },
+   "requires": [
+    "see_scaffold",
+    "see_hose"
+   ],
+   "points": 10,
+   "marker": "contractor",
+   "concept": "escalation",
+   "outOfOrder": "ignore",
+   "scene": "communicate",
+   "hintKeys": [
+    "m.hr4.hint.talk_crew.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "review_board",
+   "titleKey": "m.hr4.step.review_board",
+   "trigger": {
+    "type": "evidence_flagged",
+    "target": "ev_other_work"
+   },
+   "requires": [
+    "talk_crew",
+    "see_drain"
+   ],
+   "points": 15,
+   "marker": "assessment",
+   "concept": "change_reassessment",
+   "outOfOrder": "ignore",
+   "scene": "evidence",
+   "hintKeys": [
+    "m.hr4.hint.review_board.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "decide",
+   "titleKey": "m.hr4.step.decide",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "pause_review"
+   },
+   "requires": [
+    "review_board"
+   ],
+   "points": 20,
+   "marker": "assessment",
+   "concept": "change_reassessment",
+   "outOfOrder": "mistake",
+   "scene": "decision",
+   "hintKeys": [
+    "m.hr4.hint.decide.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.hr4.early.decide"
+  }
+ ],
+ "criticalErrors": [
+  {
+   "id": "carry_on_old_assessment",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "carry_on"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "change_reassessment",
+   "explanationKey": "m.hr4.crit.carry_on_old_assessment.why",
+   "missingKey": "m.hr4.crit.carry_on_old_assessment.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "move_pressurised_hose",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "move_hose"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "change_reassessment",
+   "explanationKey": "m.hr4.crit.move_pressurised_hose.why",
+   "missingKey": "m.hr4.crit.move_pressurised_hose.missing",
+   "dialogue": "unsafe"
+  }
+ ],
+ "criticalPolicy": {
+  "failAfterTotal": 2
+ },
+ "mistakes": [
+  {
+   "id": "ignore_crew",
+   "trigger": {
+    "type": "decision_made",
+    "target": "crew",
+    "value": "ignore"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr4.fb.ignore_crew",
+   "concept": "escalation"
+  },
+  {
+   "id": "wrong_flag",
+   "trigger": {
+    "type": "evidence_flagged"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr4.fb.wrong_flag",
+   "concept": "documented_evidence"
+  }
+ ],
+ "worldEvents": [
+  {
+   "id": "crew_arrives",
+   "when": {
+    "completed": [
+     "inspect_valve"
+    ]
+   },
+   "delay": 0.6,
+   "actions": [
+    {
+     "type": "banner",
+     "style": "danger",
+     "textKey": "m.hr4.evt.crew_arrives.1"
+    },
+    {
+     "type": "sound",
+     "sound": "warning"
+    },
+    {
+     "type": "dialogue",
+     "name": "arrival"
+    }
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": "A",
+   "labelKey": "mission.common.variantA",
+   "overrides": {
+    "interactables": {},
+    "evidence": {}
+   }
+  }
+ ],
+ "variantPolicy": {
+  "rule": "rotate_by_attempt",
+  "order": [
+   "A"
+  ]
+ },
+ "mcq": {
+  "questionIds": [
+   "HR4-Q1",
+   "HR4-Q2",
+   "HR4-Q3",
+   "HR4-Q4"
+  ],
+  "passFraction": 0.75
+ },
+ "hints": {
+  "budget": {
+   "fresher": 4,
+   "mid": 2,
+   "senior": 1
+  },
+  "penalty": 2
+ },
+ "assistance": {
+  "fresher": {
+   "objectiveDetail": "standard",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "mid": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "senior": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  }
+ },
+ "scoring": {
+  "mistakePenalty": 5,
+  "invalidActionPenalty": 3,
+  "hintPenalty": 2,
+  "criticalPenalty": 25,
+  "masteryThreshold": 90,
+  "passThreshold": 70
+ },
+ "authoring": {
+  "language": "en",
+  "note": "Trainer-facing scenario specification. Conceptual training scenario; not an industrial SOP. All content awaits subject-matter-expert review.",
+  "workplaceLocation": "Fictional tank-farm manifold.",
+  "equipmentType": "Manifold valve MV-7; scaffold, jetting hose and open drain introduced mid-mission.",
+  "corePrinciple": "When the work area changes after the briefing, the original assessment no longer covers it.",
+  "commonMisconceptions": [
+   "A morning briefing covers the whole day.",
+   "I can tidy away another crew's equipment."
+  ],
+  "criticalDecisions": [
+   "Carry on under the old assessment",
+   "Move a pressurised hose"
+  ],
+  "assessmentCriteria": {
+   "correct": "Notice scaffold, hose and drain; coordinate with the crew; flag the outdated assessment; pause for review."
+  },
+  "scenarioChange": "After the valve check, a pre-scripted contract crew appears (scaffold, hose, open drain)."
+ },
+ "report": {
+  "evidenceSteps": [
+   "inspect_valve",
+   "see_scaffold",
+   "see_hose",
+   "see_drain",
+   "review_board"
+  ],
+  "decisionSteps": [
+   "talk_crew",
+   "decide"
+  ]
+ }
+}

@@ -1,0 +1,1066 @@
+{
+ "schemaVersion": 2,
+ "id": "og-hazrec-l5-hazard-hunt",
+ "version": 1,
+ "industry": "oil_gas",
+ "department": "plant_maintenance",
+ "designations": [
+  "og_mech_maint"
+ ],
+ "roleTitleKey": "mission.common.roleTrainee",
+ "designedFor": [
+  "mid",
+  "senior"
+ ],
+ "category": "og_hazard_recognition",
+ "level": 5,
+ "estimatedMinutes": 18,
+ "titleKey": "m.hr5.title",
+ "subtitleKey": "m.hr5.subtitle",
+ "descriptionKey": "m.hr5.description",
+ "briefingKeys": [
+  "m.hr5.briefing.1",
+  "m.hr5.briefing.2"
+ ],
+ "assignmentKeys": {
+  "assignment": "m.hr5.assignment.task",
+  "equipment": "m.hr5.assignment.equipment",
+  "objective": "m.hr5.assignment.objective",
+  "information": "m.hr5.assignment.information"
+ },
+ "learningObjectiveKeys": [
+  "m.hr5.objectives.1",
+  "m.hr5.objectives.2"
+ ],
+ "debriefKeys": {
+  "success": "m.hr5.debrief.success",
+  "critical": "m.hr5.debrief.critical",
+  "failed": "m.hr5.debrief.failed"
+ },
+ "ruleSet": {
+  "status": "provisional",
+  "noticeKey": "mission.common.provisionalNotice"
+ },
+ "contentReview": {
+  "status": "draft_unreviewed",
+  "translationStatus": "demonstration_only",
+  "lastModified": "2026-10-09"
+ },
+ "referenceIds": [
+  "REF-OISD-STD-154",
+  "REF-HSE-HSG253"
+ ],
+ "safetyReferences": [],
+ "safetyReferencesNoteKey": "mission.common.noReviewedReferences",
+ "prerequisites": {
+  "missions": []
+ },
+ "scene": {
+  "id": "complex",
+  "site": "yard",
+  "time": "dusk",
+  "spawn": {
+   "x": 0,
+   "z": -23,
+   "heading": 0
+  },
+  "workPoint": {
+   "x": 0,
+   "z": -4,
+   "heading": 0
+  },
+  "cinematic": {
+   "dayKey": "chapter.og_hazard_recognition.5",
+   "locationKey": "m.hr5.location",
+   "titleKey": "m.hr5.title"
+  },
+  "restrictedZones": [],
+  "environmentIndicators": [],
+  "props": [
+   {
+    "type": "pipe",
+    "x": 0,
+    "z": 8.0,
+    "heading": 0,
+    "params": {
+     "len": 16,
+     "y": 1.0,
+     "d": 0.34,
+     "color": "#8a96a8"
+    }
+   },
+   {
+    "type": "pipe",
+    "x": 0,
+    "z": 8.6,
+    "heading": 0,
+    "params": {
+     "len": 16,
+     "y": 1.6,
+     "d": 0.22,
+     "color": "#e8423f"
+    }
+   },
+   {
+    "type": "building",
+    "x": 13.0,
+    "z": 3.0,
+    "heading": 90,
+    "params": {
+     "w": 8,
+     "d": 5,
+     "h": 4,
+     "sign": "m.hr5.prop.2.1"
+    }
+   },
+   {
+    "type": "crate",
+    "x": 6.5,
+    "z": -1.0,
+    "heading": 0,
+    "params": {
+     "color": "#c49a5c"
+    }
+   },
+   {
+    "type": "cone",
+    "x": 1.6,
+    "z": -1.5,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "type": "cone",
+    "x": -1.6,
+    "z": -1.5,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "id": "gauge_pi520",
+    "type": "gauge",
+    "x": 0.0,
+    "z": 6.6,
+    "heading": 0,
+    "params": {
+     "tag": "PI-520"
+    },
+    "state": "normal"
+   },
+   {
+    "id": "spill",
+    "type": "spill",
+    "x": -3.0,
+    "z": 3.0,
+    "heading": 0,
+    "params": {
+     "size": 2.0
+    }
+   },
+   {
+    "id": "flange_520",
+    "type": "leak",
+    "x": 4.5,
+    "z": 6.6,
+    "heading": 0,
+    "params": {},
+    "state": "on"
+   },
+   {
+    "id": "ext_point",
+    "type": "extinguisher",
+    "x": -6.5,
+    "z": 1.0,
+    "heading": 90,
+    "params": {},
+    "state": "missing"
+   },
+   {
+    "id": "packing",
+    "type": "combustibles",
+    "x": -4.0,
+    "z": 8.0,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "id": "drums_ok",
+    "type": "drum",
+    "x": 6.0,
+    "z": 2.0,
+    "heading": 0,
+    "params": {
+     "count": 4,
+     "color": "#2fbf71"
+    }
+   },
+   {
+    "id": "job_card",
+    "type": "permit_box",
+    "x": 3.0,
+    "z": -2.6,
+    "heading": 0,
+    "params": {
+     "title": "m.hr5.prop.job_card.1"
+    }
+   },
+   {
+    "id": "radio_point",
+    "type": "phone",
+    "x": -6.0,
+    "z": -3.0,
+    "heading": 90,
+    "params": {}
+   },
+   {
+    "id": "decision_board",
+    "type": "stand",
+    "x": 0.0,
+    "z": -3.6,
+    "heading": 0,
+    "params": {
+     "title": "m.hr5.prop.decision_board.1"
+    }
+   }
+  ],
+  "briefingNpc": "supervisor"
+ },
+ "briefingPhase": {
+  "allowedEvents": [
+   "world_entered",
+   "zone_entered",
+   "npc_interacted",
+   "checklist_opened",
+   "hint_requested",
+   "object_inspected"
+  ]
+ },
+ "zones": [
+  {
+   "id": "zone_line520",
+   "nameKey": "m.hr5.zone.zone_line520",
+   "minX": -8,
+   "maxX": 8,
+   "minZ": -2,
+   "maxZ": 10
+  }
+ ],
+ "npcs": [
+  {
+   "id": "supervisor",
+   "nameKey": "npc.supervisor.name",
+   "roleKey": "npc.supervisor.role",
+   "portrait": "supervisor",
+   "x": -3,
+   "z": -12,
+   "heading": 180,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "meet",
+     "when": {
+      "notCompleted": [
+       "meet_supervisor"
+      ]
+     }
+    },
+    {
+     "dialogue": "revisit"
+    }
+   ]
+  }
+ ],
+ "dialogues": {
+  "meet": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.meet.1",
+    "mood": "neutral"
+   },
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.meet.2",
+    "mood": "serious"
+   }
+  ],
+  "revisit": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.revisit.1",
+    "mood": "neutral"
+   }
+  ],
+  "radio_ack": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.radio_ack.1",
+    "mood": "serious"
+   }
+  ],
+  "unsafe": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.unsafe.1",
+    "mood": "concerned"
+   }
+  ],
+  "correct": [
+   {
+    "speaker": "supervisor",
+    "textKey": "m.hr5.dlg.correct.1",
+    "mood": "pleased"
+   }
+  ]
+ },
+ "consequencePanels": {
+  "principle": {
+   "titleKey": "m.hr5.comic.title",
+   "panelKeys": [
+    "m.hr5.comic.p1",
+    "m.hr5.comic.p2",
+    "m.hr5.comic.p3"
+   ],
+   "art": [
+    "magnifier",
+    "radio",
+    "stop_sign"
+   ]
+  }
+ },
+ "debriefRules": [
+  {
+   "when": {
+    "criticalRule": "go_anyway"
+   },
+   "textKey": "m.hr5.debrief.l1"
+  },
+  {
+   "when": {
+    "criticalRule": "fix_leak_yourself"
+   },
+   "textKey": "m.hr5.debrief.l2"
+  },
+  {
+   "when": {
+    "stepCompleted": "h_extinguisher"
+   },
+   "textKey": "m.hr5.debrief.l3"
+  },
+  {
+   "when": {
+    "stepCompleted": "card"
+   },
+   "textKey": "m.hr5.debrief.l4"
+  },
+  {
+   "when": {
+    "counterAbove": [
+     "incorrectDecisions",
+     0
+    ]
+   },
+   "textKey": "m.hr5.debrief.l5"
+  },
+  {
+   "when": {
+    "stepCompleted": "decide"
+   },
+   "textKey": "m.hr5.debrief.l6"
+  }
+ ],
+ "interactables": [
+  {
+   "id": "gauge_pi520",
+   "nameKey": "m.hr5.obj.gauge_pi520.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.gauge_pi520.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "spill",
+   "nameKey": "m.hr5.obj.spill.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.spill.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "flange_520",
+   "nameKey": "m.hr5.obj.flange_520.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.flange_520.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "ext_point",
+   "nameKey": "m.hr5.obj.ext_point.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.ext_point.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "packing",
+   "nameKey": "m.hr5.obj.packing.name",
+   "type": "hazard",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.packing.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "drums_ok",
+   "nameKey": "m.hr5.obj.drums_ok.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr5.obj.drums_ok.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "job_card",
+   "nameKey": "m.hr5.obj.job_card.name",
+   "type": "document",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.read",
+   "detailKeys": [
+    "m.hr5.obj.job_card.d1"
+   ],
+   "panel": "document",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": "record"
+  },
+  {
+   "id": "radio_point",
+   "nameKey": "m.hr5.obj.radio_point.name",
+   "type": "communication",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.use",
+   "detailKeys": [
+    "m.hr5.obj.radio_point.d1"
+   ],
+   "panel": "comms",
+   "groups": [
+    "report"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "decision_board",
+   "nameKey": "m.hr5.obj.decision_board.name",
+   "type": "station",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.review",
+   "detailKeys": [
+    "m.hr5.obj.decision_board.d1"
+   ],
+   "panel": "station",
+   "groups": [
+    "final"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev_task",
+   "labelKey": "m.hr5.ev.ev_task.label",
+   "statusKey": "m.hr5.ev.ev_task.value",
+   "complete": true,
+   "doc": "job_card"
+  },
+  {
+   "id": "ev_permit_ref",
+   "labelKey": "m.hr5.ev.ev_permit_ref.label",
+   "statusKey": "m.hr5.ev.ev_permit_ref.value",
+   "complete": false,
+   "doc": "job_card"
+  },
+  {
+   "id": "ev_isolation",
+   "labelKey": "m.hr5.ev.ev_isolation.label",
+   "statusKey": "m.hr5.ev.ev_isolation.value",
+   "complete": true,
+   "doc": "job_card"
+  }
+ ],
+ "decisions": [
+  {
+   "value": "all",
+   "labelKey": "m.hr5.grp.report.all",
+   "group": "report"
+  },
+  {
+   "value": "leak_only",
+   "labelKey": "m.hr5.grp.report.leak_only",
+   "group": "report"
+  },
+  {
+   "value": "drums",
+   "labelKey": "m.hr5.grp.report.drums",
+   "group": "report"
+  },
+  {
+   "value": "no_go",
+   "labelKey": "m.hr5.grp.final.no_go",
+   "group": "final"
+  },
+  {
+   "value": "go",
+   "labelKey": "m.hr5.grp.final.go",
+   "group": "final"
+  },
+  {
+   "value": "fix_first",
+   "labelKey": "m.hr5.grp.final.fix_first",
+   "group": "final"
+  }
+ ],
+ "decisionGroups": [
+  {
+   "id": "report",
+   "promptKey": "m.hr5.grp.report.prompt",
+   "ui": "comms"
+  },
+  {
+   "id": "final",
+   "promptKey": "m.hr5.grp.final.prompt",
+   "ui": "choice"
+  }
+ ],
+ "inventory": [],
+ "tools": [
+  {
+   "id": "flashlight",
+   "nameKey": "tool.flashlight.name",
+   "descKey": "tool.flashlight.desc",
+   "allowedTargets": [
+    "flange_520",
+    "gauge_pi520",
+    "spill",
+    "packing"
+   ],
+   "requiresTarget": true
+  },
+  {
+   "id": "spanner",
+   "nameKey": "tool.spanner.name",
+   "descKey": "tool.spanner.desc",
+   "allowedTargets": [],
+   "requiresTarget": true
+  },
+  {
+   "id": "radio",
+   "nameKey": "tool.radio.name",
+   "descKey": "tool.radio.desc",
+   "allowedTargets": [
+    "*"
+   ],
+   "requiresTarget": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "meet_supervisor",
+   "titleKey": "story.step.meet.supervisor",
+   "trigger": {
+    "type": "npc_interacted",
+    "target": "supervisor"
+   },
+   "requires": [],
+   "points": 5,
+   "marker": "supervisor",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "meet",
+   "hintKeys": [
+    "story.hint.meet.supervisor"
+   ]
+  },
+  {
+   "id": "briefing",
+   "titleKey": "story.step.briefing",
+   "trigger": {
+    "type": "briefing_acknowledged"
+   },
+   "requires": [
+    "meet_supervisor"
+   ],
+   "points": 5,
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "briefing",
+   "hintKeys": [
+    "story.hint.briefing"
+   ]
+  },
+  {
+   "id": "enter",
+   "titleKey": "m.hr5.step.enter",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_line520"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 5,
+   "marker": "zone_line520",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "navigate",
+   "hintKeys": [
+    "m.hr5.hint.enter.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "find_gauge",
+   "titleKey": "m.hr5.step.find_gauge",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "gauge_pi520"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 5,
+   "marker": null,
+   "concept": "equipment_identification",
+   "outOfOrder": "ignore",
+   "scene": "identify",
+   "hintKeys": [
+    "m.hr5.hint.find_gauge.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "h_spill",
+   "titleKey": "m.hr5.step.h_spill",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "spill"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 8,
+   "marker": null,
+   "concept": "hazard_identification",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr5.hint.h_spill.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "h_leak",
+   "titleKey": "m.hr5.step.h_leak",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "flange_520"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 8,
+   "marker": null,
+   "concept": "hazard_identification",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr5.hint.h_leak.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "h_extinguisher",
+   "titleKey": "m.hr5.step.h_extinguisher",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "ext_point"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 8,
+   "marker": null,
+   "concept": "fire_hazard_spotting",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr5.hint.h_extinguisher.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "h_packing",
+   "titleKey": "m.hr5.step.h_packing",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "packing"
+   },
+   "requires": [
+    "enter"
+   ],
+   "points": 8,
+   "marker": null,
+   "concept": "combustibles_awareness",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr5.hint.h_packing.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "card",
+   "titleKey": "m.hr5.step.card",
+   "trigger": {
+    "type": "evidence_flagged",
+    "target": "ev_permit_ref"
+   },
+   "requires": [
+    "find_gauge"
+   ],
+   "points": 12,
+   "marker": null,
+   "concept": "documented_evidence",
+   "outOfOrder": "ignore",
+   "scene": "documents",
+   "hintKeys": [
+    "m.hr5.hint.card.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "report",
+   "titleKey": "m.hr5.step.report",
+   "trigger": {
+    "type": "decision_made",
+    "target": "report",
+    "value": "all"
+   },
+   "requires": [
+    "h_spill",
+    "h_leak",
+    "h_extinguisher",
+    "h_packing",
+    "card"
+   ],
+   "points": 15,
+   "marker": null,
+   "concept": "escalation",
+   "outOfOrder": "mistake",
+   "scene": "communicate",
+   "hintKeys": [
+    "m.hr5.hint.report.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.hr5.early.report"
+  },
+  {
+   "id": "decide",
+   "titleKey": "m.hr5.step.decide",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "no_go"
+   },
+   "requires": [
+    "report"
+   ],
+   "points": 15,
+   "marker": null,
+   "concept": "stop_work_authority",
+   "outOfOrder": "mistake",
+   "scene": "decision",
+   "hintKeys": [
+    "m.hr5.hint.decide.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.hr5.early.decide"
+  }
+ ],
+ "criticalErrors": [
+  {
+   "id": "go_anyway",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "go"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "stop_work_authority",
+   "explanationKey": "m.hr5.crit.go_anyway.why",
+   "missingKey": "m.hr5.crit.go_anyway.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "fix_leak_yourself",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "fix_first"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "no_untrained_intervention",
+   "explanationKey": "m.hr5.crit.fix_leak_yourself.why",
+   "missingKey": "m.hr5.crit.fix_leak_yourself.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "spanner_live",
+   "trigger": {
+    "type": "tool_used",
+    "value": "spanner",
+    "targets": [
+     "flange_520",
+     "gauge_pi520"
+    ]
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "no_untrained_intervention",
+   "explanationKey": "m.hr5.crit.spanner_live.why",
+   "missingKey": "m.hr5.crit.spanner_live.missing",
+   "dialogue": "unsafe",
+   "condition": {
+    "notCompleted": [
+     "decide"
+    ]
+   }
+  }
+ ],
+ "criticalPolicy": {
+  "failAfterTotal": 2
+ },
+ "mistakes": [
+  {
+   "id": "partial_report",
+   "trigger": {
+    "type": "decision_made",
+    "target": "report",
+    "value": "leak_only"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr5.fb.partial_report",
+   "concept": "escalation"
+  },
+  {
+   "id": "false_alarm",
+   "trigger": {
+    "type": "decision_made",
+    "target": "report",
+    "value": "drums"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr5.fb.false_alarm",
+   "concept": "hazard_identification"
+  },
+  {
+   "id": "drums_advisory",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "drums_ok"
+   },
+   "kind": "advisory",
+   "feedbackKey": "m.hr5.fb.drums_advisory",
+   "concept": "hazard_identification"
+  },
+  {
+   "id": "wrong_flag",
+   "trigger": {
+    "type": "evidence_flagged"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr5.fb.wrong_flag",
+   "concept": "documented_evidence"
+  }
+ ],
+ "worldEvents": [
+  {
+   "id": "radio_reply",
+   "when": {
+    "completed": [
+     "report"
+    ]
+   },
+   "delay": 0,
+   "actions": [
+    {
+     "type": "sound",
+     "sound": "radio"
+    },
+    {
+     "type": "dialogue",
+     "name": "radio_ack"
+    }
+   ]
+  }
+ ],
+ "variants": [
+  {
+   "id": "A",
+   "labelKey": "mission.common.variantA",
+   "overrides": {
+    "interactables": {},
+    "evidence": {}
+   }
+  }
+ ],
+ "variantPolicy": {
+  "rule": "rotate_by_attempt",
+  "order": [
+   "A"
+  ]
+ },
+ "mcq": {
+  "questionIds": [
+   "HR5-Q1",
+   "HR5-Q2",
+   "HR5-Q3",
+   "HR5-Q4"
+  ],
+  "passFraction": 0.75
+ },
+ "hints": {
+  "budget": {
+   "fresher": 3,
+   "mid": 1,
+   "senior": 0
+  },
+  "penalty": 2
+ },
+ "assistance": {
+  "fresher": {
+   "objectiveDetail": "standard",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "mid": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  },
+  "senior": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  }
+ },
+ "scoring": {
+  "mistakePenalty": 5,
+  "invalidActionPenalty": 3,
+  "hintPenalty": 2,
+  "criticalPenalty": 25,
+  "masteryThreshold": 90,
+  "passThreshold": 70
+ },
+ "authoring": {
+  "language": "en",
+  "note": "Trainer-facing scenario specification. Conceptual training scenario; not an industrial SOP. All content awaits subject-matter-expert review.",
+  "workplaceLocation": "Fictional line 520 beside a loading bay, at dusk.",
+  "equipmentType": "Gauge PI-520, flange with drip, fire point with missing extinguisher, combustibles near red-painted line, correctly stored drums (distractor).",
+  "corePrinciple": "Combine hazard recognition, document checks and escalation; open findings mean no-go.",
+  "commonMisconceptions": [
+   "Small jobs need small checks.",
+   "Only report the worst thing.",
+   "Quick fixes are helpful."
+  ],
+  "criticalDecisions": [
+   "Go with open findings",
+   "Fix the leak yourself",
+   "Use a tool before the decision"
+  ],
+  "assessmentCriteria": {
+   "correct": "Find 4 hazards + missing permit ref; report all; no-go."
+  }
+ },
+ "report": {
+  "evidenceSteps": [
+   "find_gauge",
+   "h_spill",
+   "h_leak",
+   "h_extinguisher",
+   "h_packing",
+   "card"
+  ],
+  "decisionSteps": [
+   "report",
+   "decide"
+  ]
+ }
+}

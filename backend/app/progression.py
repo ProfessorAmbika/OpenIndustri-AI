@@ -4,9 +4,12 @@ from __future__ import annotations
 import sqlite3
 from typing import Any
 
+from . import db
 from .config import Settings
 from .content import MissionDef, load_catalogue, load_missions
 from .scoring import PASSING_OUTCOMES
+
+DEMO_UNLOCK_KEY = "demo_unlock_all"
 
 AVAILABLE = "available"
 LOCKED = "locked"
@@ -27,12 +30,20 @@ def mission_for(missions: dict[str, tuple[MissionDef, str, dict]], category: str
     return None
 
 
+def demo_unlock_all(conn: sqlite3.Connection) -> bool:
+    """Admin-controlled demo mode: every authored level is open. Designation
+    eligibility still applies, and no progress or 'passed' record is altered."""
+    return db.get_setting(conn, DEMO_UNLOCK_KEY, "0") == "1"
+
+
 def mission_status(conn: sqlite3.Connection, settings: Settings, user_id: int, mission: MissionDef, designation: str) -> tuple[str, str | None]:
     """Returns (status, reason)."""
     missions = load_missions(settings.shared_dir)
     progress = passed_missions(conn, user_id)
     if designation not in mission.designations:
         return LOCKED, "designation_ineligible"
+    if demo_unlock_all(conn):
+        return AVAILABLE, None
     for prereq in mission.prerequisites.missions:
         if not progress.get(prereq, {}).get("passed"):
             return LOCKED, "prerequisite_mission"

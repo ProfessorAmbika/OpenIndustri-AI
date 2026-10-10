@@ -208,7 +208,8 @@ def _validate_reference(mission: MissionDef, ev: dict[str, Any]) -> str | None:
     objects = {i.id for i in mission.interactables}
     evidence = {e.id for e in mission.evidence}
     tools = {x.id for x in mission.tools}
-    decisions = {d.value for d in mission.decisions}
+    decisions = {(d.group, d.value) for d in mission.decisions}
+    items = {i.id for i in mission.inventory}
     steps = {s.id for s in mission.steps}
     checks = {
         "zone_entered": target in zones and value is None,
@@ -216,8 +217,9 @@ def _validate_reference(mission: MissionDef, ev: dict[str, Any]) -> str | None:
         "object_inspected": target in objects and value is None,
         "tool_selected": value in tools and target is None,
         "tool_used": value in tools and (target is None or target in objects),
-        "evidence_flagged": target in evidence and value is None,
-        "decision_made": value in decisions and target is None,
+        "evidence_flagged": (target in evidence or target in items) and value is None,
+        "decision_made": (target, value) in decisions,
+        "item_selected": target in items and value is None,
         "hint_requested": (target is None or target in steps) and value is None,
     }
     ok = checks.get(t, target is None and value is None)

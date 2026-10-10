@@ -1,0 +1,983 @@
+{
+ "schemaVersion": 2,
+ "id": "og-hazrec-l2-warning-behind-pipes",
+ "version": 1,
+ "industry": "oil_gas",
+ "department": "plant_maintenance",
+ "designations": [
+  "og_mech_maint"
+ ],
+ "roleTitleKey": "mission.common.roleTrainee",
+ "designedFor": [
+  "fresher"
+ ],
+ "category": "og_hazard_recognition",
+ "level": 2,
+ "estimatedMinutes": 12,
+ "titleKey": "m.hr2.title",
+ "subtitleKey": "m.hr2.subtitle",
+ "descriptionKey": "m.hr2.description",
+ "briefingKeys": [
+  "m.hr2.briefing.1",
+  "m.hr2.briefing.2"
+ ],
+ "assignmentKeys": {
+  "assignment": "m.hr2.assignment.task",
+  "equipment": "m.hr2.assignment.equipment",
+  "objective": "m.hr2.assignment.objective",
+  "information": "m.hr2.assignment.information"
+ },
+ "learningObjectiveKeys": [
+  "m.hr2.objectives.1",
+  "m.hr2.objectives.2"
+ ],
+ "debriefKeys": {
+  "success": "m.hr2.debrief.success",
+  "critical": "m.hr2.debrief.critical",
+  "failed": "m.hr2.debrief.failed"
+ },
+ "ruleSet": {
+  "status": "provisional",
+  "noticeKey": "mission.common.provisionalNotice"
+ },
+ "contentReview": {
+  "status": "draft_unreviewed",
+  "translationStatus": "demonstration_only",
+  "lastModified": "2026-10-09"
+ },
+ "referenceIds": [
+  "REF-OISD-STD-154",
+  "REF-HSE-HSG253"
+ ],
+ "safetyReferences": [],
+ "safetyReferencesNoteKey": "mission.common.noReviewedReferences",
+ "prerequisites": {
+  "missions": []
+ },
+ "scene": {
+  "id": "complex",
+  "site": "process",
+  "time": "day",
+  "spawn": {
+   "x": 0,
+   "z": -23,
+   "heading": 0
+  },
+  "workPoint": {
+   "x": 0,
+   "z": -3.5,
+   "heading": 0
+  },
+  "cinematic": {
+   "dayKey": "chapter.og_hazard_recognition.2",
+   "locationKey": "m.hr2.location",
+   "titleKey": "m.hr2.title"
+  },
+  "restrictedZones": [
+   "zone_live"
+  ],
+  "environmentIndicators": [],
+  "props": [
+   {
+    "type": "tape",
+    "x": 11.5,
+    "z": 3.5,
+    "heading": 0,
+    "params": {
+     "w": 5,
+     "d": 7
+    }
+   },
+   {
+    "type": "sign",
+    "x": 8.6,
+    "z": 1.0,
+    "heading": 90,
+    "params": {
+     "kind": "prohibition",
+     "text": "world.sign.authorisedOnly"
+    }
+   },
+   {
+    "type": "exchanger",
+    "x": 3.2,
+    "z": 5.0,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "type": "pipe",
+    "x": -1.0,
+    "z": 1.0,
+    "heading": 0,
+    "params": {
+     "len": 7,
+     "y": 1.3,
+     "d": 0.32,
+     "color": "#8a96a8"
+    }
+   },
+   {
+    "type": "pipe",
+    "x": -1.0,
+    "z": 1.0,
+    "heading": 0,
+    "params": {
+     "len": 7,
+     "y": 2.4,
+     "d": 0.24,
+     "color": "#1f6f8b"
+    }
+   },
+   {
+    "type": "pipe",
+    "x": -3.0,
+    "z": 7.6,
+    "heading": 90,
+    "params": {
+     "len": 4,
+     "y": 1.0,
+     "d": 0.28,
+     "color": "#ffc23d"
+    }
+   },
+   {
+    "type": "compressor",
+    "x": -1.0,
+    "z": 12.0,
+    "heading": 0,
+    "params": {
+     "tag": "K-210"
+    }
+   },
+   {
+    "type": "drum",
+    "x": 6.0,
+    "z": -1.5,
+    "heading": 0,
+    "params": {
+     "count": 2
+    }
+   },
+   {
+    "type": "scaffold",
+    "x": -5.5,
+    "z": 3.0,
+    "heading": 90,
+    "params": {}
+   },
+   {
+    "id": "flange_f12",
+    "type": "leak",
+    "x": -1.0,
+    "z": 3.6,
+    "heading": 0,
+    "params": {},
+    "state": "off"
+   },
+   {
+    "id": "flange_f11",
+    "type": "leak",
+    "x": -1.0,
+    "z": 6.6,
+    "heading": 0,
+    "params": {},
+    "state": "off"
+   },
+   {
+    "id": "valve_xv210",
+    "type": "valve",
+    "x": -5.6,
+    "z": 6.2,
+    "heading": -90,
+    "params": {
+     "tag": "XV-210"
+    },
+    "state": "tagged"
+   },
+   {
+    "id": "sign_hidden",
+    "type": "sign",
+    "x": 3.2,
+    "z": 6.6,
+    "heading": 180,
+    "params": {
+     "signKind": "warning",
+     "text": "m.hr2.prop.sign_hidden.1"
+    }
+   },
+   {
+    "id": "area_board",
+    "type": "board",
+    "x": -4.5,
+    "z": -3.2,
+    "heading": 0,
+    "params": {
+     "title": "m.hr2.prop.area_board.1",
+     "lines": [
+      "m.hr2.prop.area_board.2",
+      "m.hr2.prop.area_board.3"
+     ]
+    }
+   },
+   {
+    "id": "review_station",
+    "type": "stand",
+    "x": 3.4,
+    "z": -3.4,
+    "heading": 0,
+    "params": {}
+   }
+  ],
+  "briefingNpc": "senior_tech"
+ },
+ "briefingPhase": {
+  "allowedEvents": [
+   "world_entered",
+   "zone_entered",
+   "npc_interacted",
+   "checklist_opened",
+   "hint_requested",
+   "object_inspected"
+  ]
+ },
+ "zones": [
+  {
+   "id": "zone_spool",
+   "nameKey": "m.hr2.zone.zone_spool",
+   "minX": -7,
+   "maxX": 7,
+   "minZ": -2,
+   "maxZ": 9
+  },
+  {
+   "id": "zone_live",
+   "nameKey": "m.hr2.zone.zone_live",
+   "minX": 9,
+   "maxX": 14,
+   "minZ": 0,
+   "maxZ": 7
+  }
+ ],
+ "npcs": [
+  {
+   "id": "senior_tech",
+   "nameKey": "npc.senior_tech.name",
+   "roleKey": "npc.senior_tech.role",
+   "portrait": "senior_tech",
+   "x": -2.5,
+   "z": -12,
+   "heading": 180,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "meet",
+     "when": {
+      "notCompleted": [
+       "meet_senior_tech"
+      ]
+     }
+    },
+    {
+     "dialogue": "revisit"
+    }
+   ]
+  }
+ ],
+ "dialogues": {
+  "meet": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.meet.1",
+    "mood": "friendly"
+   },
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.meet.2",
+    "mood": "neutral"
+   },
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.meet.3",
+    "mood": "serious"
+   },
+   {
+    "speaker": "self",
+    "textKey": "m.hr2.dlg.meet.4",
+    "mood": "neutral"
+   }
+  ],
+  "revisit": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.revisit.1",
+    "mood": "neutral"
+   }
+  ],
+  "unsafe": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.unsafe.1",
+    "mood": "concerned"
+   },
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.unsafe.2",
+    "mood": "serious"
+   }
+  ],
+  "correct": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.hr2.dlg.correct.1",
+    "mood": "pleased"
+   }
+  ]
+ },
+ "consequencePanels": {
+  "principle": {
+   "titleKey": "m.hr2.comic.title",
+   "panelKeys": [
+    "m.hr2.comic.p1",
+    "m.hr2.comic.p2",
+    "m.hr2.comic.p3"
+   ],
+   "art": [
+    "magnifier",
+    "document_gap",
+    "stop_sign"
+   ]
+  }
+ },
+ "debriefRules": [
+  {
+   "when": {
+    "criticalRule": "start_on_paper"
+   },
+   "textKey": "m.hr2.debrief.l1"
+  },
+  {
+   "when": {
+    "criticalRule": "remove_warning"
+   },
+   "textKey": "m.hr2.debrief.l2"
+  },
+  {
+   "when": {
+    "criticalRule": "spanner_on_line"
+   },
+   "textKey": "m.hr2.debrief.l3"
+  },
+  {
+   "when": {
+    "stepCompleted": "find_tag"
+   },
+   "textKey": "m.hr2.debrief.l4"
+  },
+  {
+   "when": {
+    "stepCompleted": "find_sign"
+   },
+   "textKey": "m.hr2.debrief.l5"
+  },
+  {
+   "when": {
+    "counterAbove": [
+     "incorrectDecisions",
+     0
+    ]
+   },
+   "textKey": "m.hr2.debrief.l6"
+  },
+  {
+   "when": {
+    "counterAbove": [
+     "invalidActions",
+     0
+    ]
+   },
+   "textKey": "m.hr2.debrief.l7"
+  },
+  {
+   "when": {
+    "stepCompleted": "decide"
+   },
+   "textKey": "m.hr2.debrief.l8"
+  }
+ ],
+ "interactables": [
+  {
+   "id": "flange_f12",
+   "nameKey": "m.hr2.obj.flange_f12.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr2.obj.flange_f12.d1",
+    "m.hr2.obj.flange_f12.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "flange_f11",
+   "nameKey": "m.hr2.obj.flange_f11.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr2.obj.flange_f11.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "valve_xv210",
+   "nameKey": "m.hr2.obj.valve_xv210.name",
+   "type": "warning",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.hr2.obj.valve_xv210.d1",
+    "m.hr2.obj.valve_xv210.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "sign_hidden",
+   "nameKey": "m.hr2.obj.sign_hidden.name",
+   "type": "warning",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.read",
+   "detailKeys": [
+    "m.hr2.obj.sign_hidden.d1",
+    "m.hr2.obj.sign_hidden.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "area_board",
+   "nameKey": "m.hr2.obj.area_board.name",
+   "type": "information",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.read",
+   "detailKeys": [
+    "m.hr2.obj.area_board.d1",
+    "m.hr2.obj.area_board.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "review_station",
+   "nameKey": "m.hr2.obj.review_station.name",
+   "type": "station",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.review",
+   "detailKeys": [
+    "m.hr2.obj.review_station.d1"
+   ],
+   "panel": "station",
+   "groups": [
+    "final"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev_job",
+   "labelKey": "m.hr2.ev.ev_job.label",
+   "statusKey": "m.hr2.ev.ev_job.value",
+   "complete": true
+  },
+  {
+   "id": "ev_line_status",
+   "labelKey": "m.hr2.ev.ev_line_status.label",
+   "statusKey": "m.hr2.ev.ev_line_status.value",
+   "complete": false
+  },
+  {
+   "id": "ev_requester",
+   "labelKey": "m.hr2.ev.ev_requester.label",
+   "statusKey": "m.hr2.ev.ev_requester.value",
+   "complete": true
+  }
+ ],
+ "decisions": [
+  {
+   "value": "stop_report",
+   "labelKey": "m.hr2.grp.final.stop_report",
+   "group": "final"
+  },
+  {
+   "value": "start",
+   "labelKey": "m.hr2.grp.final.start",
+   "group": "final"
+  },
+  {
+   "value": "remove_tag",
+   "labelKey": "m.hr2.grp.final.remove_tag",
+   "group": "final"
+  }
+ ],
+ "decisionGroups": [
+  {
+   "id": "final",
+   "promptKey": "m.hr2.grp.final.prompt",
+   "ui": "choice"
+  }
+ ],
+ "inventory": [],
+ "tools": [
+  {
+   "id": "flashlight",
+   "nameKey": "tool.flashlight.name",
+   "descKey": "tool.flashlight.desc",
+   "allowedTargets": [
+    "flange_f12",
+    "flange_f11",
+    "valve_xv210"
+   ],
+   "requiresTarget": true
+  },
+  {
+   "id": "spanner",
+   "nameKey": "tool.spanner.name",
+   "descKey": "tool.spanner.desc",
+   "allowedTargets": [],
+   "requiresTarget": true
+  },
+  {
+   "id": "radio",
+   "nameKey": "tool.radio.name",
+   "descKey": "tool.radio.desc",
+   "allowedTargets": [
+    "*"
+   ],
+   "requiresTarget": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "meet_senior_tech",
+   "titleKey": "story.step.meet.senior_tech",
+   "trigger": {
+    "type": "npc_interacted",
+    "target": "senior_tech"
+   },
+   "requires": [],
+   "points": 5,
+   "marker": "senior_tech",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "meet",
+   "hintKeys": [
+    "story.hint.meet.senior_tech"
+   ]
+  },
+  {
+   "id": "briefing",
+   "titleKey": "story.step.briefing",
+   "trigger": {
+    "type": "briefing_acknowledged"
+   },
+   "requires": [
+    "meet_senior_tech"
+   ],
+   "points": 5,
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "briefing",
+   "hintKeys": [
+    "story.hint.briefing"
+   ]
+  },
+  {
+   "id": "enter_area",
+   "titleKey": "m.hr2.step.enter_area",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_spool"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 5,
+   "marker": "zone_spool",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "navigate",
+   "hintKeys": [
+    "m.hr2.hint.enter_area.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "locate_flange",
+   "titleKey": "m.hr2.step.locate_flange",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "flange_f12"
+   },
+   "requires": [
+    "enter_area"
+   ],
+   "points": 10,
+   "marker": "flange_f12",
+   "concept": "equipment_identification",
+   "outOfOrder": "ignore",
+   "scene": "identify",
+   "hintKeys": [
+    "m.hr2.hint.locate_flange.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "read_log",
+   "titleKey": "m.hr2.step.read_log",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "area_board"
+   },
+   "requires": [
+    "locate_flange"
+   ],
+   "points": 10,
+   "marker": "area_board",
+   "concept": "hidden_hazard_info",
+   "outOfOrder": "ignore",
+   "scene": "documents",
+   "hintKeys": [
+    "m.hr2.hint.read_log.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "find_tag",
+   "titleKey": "m.hr2.step.find_tag",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "valve_xv210"
+   },
+   "requires": [
+    "locate_flange"
+   ],
+   "points": 15,
+   "marker": "valve_xv210",
+   "concept": "hidden_hazard_info",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr2.hint.find_tag.1",
+    "m.hr2.hint.find_tag.2"
+   ],
+   "optional": false
+  },
+  {
+   "id": "find_sign",
+   "titleKey": "m.hr2.step.find_sign",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "sign_hidden"
+   },
+   "requires": [
+    "locate_flange"
+   ],
+   "points": 15,
+   "marker": "sign_hidden",
+   "concept": "hidden_hazard_info",
+   "outOfOrder": "ignore",
+   "scene": "hazards",
+   "hintKeys": [
+    "m.hr2.hint.find_sign.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "review",
+   "titleKey": "m.hr2.step.review",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "review_station"
+   },
+   "requires": [
+    "find_tag",
+    "find_sign",
+    "read_log"
+   ],
+   "points": 5,
+   "marker": "review_station",
+   "concept": "documented_evidence",
+   "outOfOrder": "ignore",
+   "scene": "evidence",
+   "hintKeys": [
+    "m.hr2.hint.review.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "flag_conflict",
+   "titleKey": "m.hr2.step.flag_conflict",
+   "trigger": {
+    "type": "evidence_flagged",
+    "target": "ev_line_status"
+   },
+   "requires": [
+    "review"
+   ],
+   "points": 15,
+   "marker": "review_station",
+   "concept": "status_documentation_mismatch",
+   "outOfOrder": "ignore",
+   "scene": "evidence",
+   "hintKeys": [
+    "m.hr2.hint.flag_conflict.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "decide",
+   "titleKey": "m.hr2.step.decide",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "stop_report"
+   },
+   "requires": [
+    "flag_conflict"
+   ],
+   "points": 20,
+   "marker": "review_station",
+   "concept": "escalation",
+   "outOfOrder": "mistake",
+   "scene": "decision",
+   "hintKeys": [
+    "m.hr2.hint.decide.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.hr2.early.decide"
+  }
+ ],
+ "criticalErrors": [
+  {
+   "id": "start_on_paper",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "start"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "status_documentation_mismatch",
+   "explanationKey": "m.hr2.crit.start_on_paper.why",
+   "missingKey": "m.hr2.crit.start_on_paper.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "remove_warning",
+   "trigger": {
+    "type": "decision_made",
+    "target": "final",
+    "value": "remove_tag"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "hidden_hazard_info",
+   "explanationKey": "m.hr2.crit.remove_warning.why",
+   "missingKey": "m.hr2.crit.remove_warning.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "spanner_on_line",
+   "trigger": {
+    "type": "tool_used",
+    "value": "spanner",
+    "targets": [
+     "flange_f12",
+     "flange_f11",
+     "valve_xv210"
+    ]
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "status_documentation_mismatch",
+   "explanationKey": "m.hr2.crit.spanner_on_line.why",
+   "missingKey": "m.hr2.crit.spanner_on_line.missing",
+   "dialogue": "unsafe",
+   "condition": {
+    "notCompleted": [
+     "decide"
+    ]
+   }
+  }
+ ],
+ "criticalPolicy": {
+  "failAfterTotal": 2
+ },
+ "mistakes": [
+  {
+   "id": "wrong_flag",
+   "trigger": {
+    "type": "evidence_flagged"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.hr2.fb.wrong_flag",
+   "concept": "documented_evidence"
+  },
+  {
+   "id": "live_area",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_live"
+   },
+   "kind": "invalid_action",
+   "feedbackKey": "m.hr2.fb.live_area",
+   "concept": "situational_awareness"
+  },
+  {
+   "id": "wrong_flange",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "flange_f11"
+   },
+   "kind": "advisory",
+   "feedbackKey": "m.hr2.fb.wrong_flange",
+   "concept": "equipment_identification"
+  }
+ ],
+ "worldEvents": [],
+ "variants": [
+  {
+   "id": "A",
+   "labelKey": "mission.common.variantA",
+   "overrides": {
+    "interactables": {},
+    "evidence": {}
+   }
+  }
+ ],
+ "variantPolicy": {
+  "rule": "rotate_by_attempt",
+  "order": [
+   "A"
+  ]
+ },
+ "mcq": {
+  "questionIds": [
+   "HR2-Q1",
+   "HR2-Q2",
+   "HR2-Q3",
+   "HR2-Q4"
+  ],
+  "passFraction": 0.75
+ },
+ "hints": {
+  "budget": {
+   "fresher": 99,
+   "mid": 3,
+   "senior": 1
+  },
+  "penalty": 2
+ },
+ "assistance": {
+  "fresher": {
+   "objectiveDetail": "full",
+   "worldMarkers": true,
+   "minimapMarkers": true,
+   "autoHintSeconds": 90
+  },
+  "mid": {
+   "objectiveDetail": "standard",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "senior": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  }
+ },
+ "scoring": {
+  "mistakePenalty": 5,
+  "invalidActionPenalty": 3,
+  "hintPenalty": 2,
+  "criticalPenalty": 25,
+  "masteryThreshold": 90,
+  "passThreshold": 70
+ },
+ "authoring": {
+  "language": "en",
+  "note": "Trainer-facing scenario specification. Conceptual training scenario; not an industrial SOP. All content awaits subject-matter-expert review.",
+  "workplaceLocation": "Fictional process unit, spool area of line 210.",
+  "equipmentType": "Bolted flange F-12, isolation valve XV-210, exchanger, compressor K-210 (decor).",
+  "corePrinciple": "Hazard information is not always visible from where you start; conflicting information is escalated, never resolved by assumption.",
+  "commonMisconceptions": [
+   "If I cannot see a warning, there is none.",
+   "An old-looking tag can be removed.",
+   "The work order overrides field information."
+  ],
+  "criticalDecisions": [
+   "Start on the strength of the work order",
+   "Remove a warning tag",
+   "Use a tool on the line before confirmation"
+  ],
+  "assessmentCriteria": {
+   "correct": "Find tag, sign and log; flag the unresolved status; stop and report.",
+   "criticalCategories": [
+    "start_on_paper",
+    "remove_warning",
+    "spanner_on_line"
+   ]
+  },
+  "assumptions": [
+   "No real procedure is taught.",
+   "No numerical thresholds are used."
+  ]
+ },
+ "report": {
+  "evidenceSteps": [
+   "locate_flange",
+   "read_log",
+   "find_tag",
+   "find_sign",
+   "flag_conflict"
+  ],
+  "decisionSteps": [
+   "decide"
+  ]
+ }
+}

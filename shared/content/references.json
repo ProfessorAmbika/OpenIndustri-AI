@@ -2,29 +2,259 @@
   "schemaVersion": 1,
   "note": "Reference registry. No clause numbers, thresholds or procedures have been extracted or verified. Every entry is UNVERIFIED until a qualified reviewer confirms the document, edition and applicability.",
   "references": [
-    { "id": "REF-OISD-STD-154", "organization": "Oil Industry Safety Directorate (OISD), India", "title": "OISD-STD-154 (training in the petroleum sector — title and edition to be confirmed)", "version": null, "topic": "Safety training in the oil & gas sector", "clause": null,
+    {
+      "id": "REF-OISD-STD-154",
+      "organization": "Oil Industry Safety Directorate (OISD), India",
+      "title": "OISD-STD-154 (training in the petroleum sector — title and edition to be confirmed)",
+      "version": null,
+      "topic": "Safety training in the oil & gas sector",
+      "clause": null,
       "trainingInterpretation": "Context only: the sector expects structured safety training. Not used as an operational procedure for any scenario.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["oil_gas"] },
-    { "id": "REF-OISD-STD-105", "organization": "Oil Industry Safety Directorate (OISD), India", "title": "OISD-STD-105 (work permit system — title and edition to be confirmed)", "version": null, "topic": "Work permits", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OISD-STD-105",
+      "organization": "Oil Industry Safety Directorate (OISD), India",
+      "title": "OISD-STD-105 (work permit system — title and edition to be confirmed)",
+      "version": null,
+      "topic": "Work permits",
+      "clause": null,
       "trainingInterpretation": "Context only: maintenance work in a facility is normally controlled by an authorisation/permit process. The game does not reproduce any permit procedure.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["oil_gas"] },
-    { "id": "REF-OSHA-1910-147", "organization": "U.S. Occupational Safety and Health Administration (OSHA)", "title": "29 CFR 1910.147 — The control of hazardous energy (lockout/tagout)", "version": null, "topic": "Control of hazardous energy during servicing and maintenance", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-147",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.147 — The control of hazardous energy (lockout/tagout)",
+      "version": null,
+      "topic": "Control of hazardous energy during servicing and maintenance",
+      "clause": null,
       "trainingInterpretation": "Conceptual awareness that machines must be in a verified safe state before servicing. No steps or terminology from the regulation are taught as procedure.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["oil_gas", "heavy_mfg"] },
-    { "id": "REF-HSE-HSG253", "organization": "Health and Safety Executive (HSE), UK", "title": "HSG253 — The safe isolation of plant and equipment", "version": null, "topic": "Isolation of plant for maintenance", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas",
+        "heavy_mfg"
+      ]
+    },
+    {
+      "id": "REF-HSE-HSG253",
+      "organization": "Health and Safety Executive (HSE), UK",
+      "title": "HSG253 — The safe isolation of plant and equipment",
+      "version": null,
+      "topic": "Isolation of plant for maintenance",
+      "clause": null,
       "trainingInterpretation": "Conceptual awareness that isolation must be confirmed and recorded by competent persons before work.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["oil_gas", "heavy_mfg"] },
-    { "id": "REF-OSHA-1910-212", "organization": "U.S. Occupational Safety and Health Administration (OSHA)", "title": "29 CFR 1910.212 — General requirements for all machines (machine guarding)", "version": null, "topic": "Machine guarding", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas",
+        "heavy_mfg"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-212",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.212 — General requirements for all machines (machine guarding)",
+      "version": null,
+      "topic": "Machine guarding",
+      "clause": null,
       "trainingInterpretation": "Conceptual awareness that guards must be in place before a machine is operated.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["heavy_mfg"] },
-    { "id": "REF-INDIA-FACTORIES-ACT-1948", "organization": "Government of India (administered with DGFASLI advisory support)", "title": "The Factories Act, 1948", "version": null, "topic": "General factory safety duties", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "heavy_mfg"
+      ]
+    },
+    {
+      "id": "REF-INDIA-FACTORIES-ACT-1948",
+      "organization": "Government of India (administered with DGFASLI advisory support)",
+      "title": "The Factories Act, 1948",
+      "version": null,
+      "topic": "General factory safety duties",
+      "clause": null,
       "trainingInterpretation": "Context only for the manufacturing world. No section numbers are cited.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["heavy_mfg"] },
-    { "id": "REF-OSHA-1926-SUBPART-L", "organization": "U.S. Occupational Safety and Health Administration (OSHA)", "title": "29 CFR 1926 Subpart L — Scaffolds", "version": null, "topic": "Scaffold safety in construction", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "heavy_mfg"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1926-SUBPART-L",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1926 Subpart L — Scaffolds",
+      "version": null,
+      "topic": "Scaffold safety in construction",
+      "clause": null,
       "trainingInterpretation": "Conceptual awareness that scaffolds must be inspected and tagged by a competent person before use.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["construction"] },
-    { "id": "REF-INDIA-BOCW-1996", "organization": "Government of India", "title": "Building and Other Construction Workers (Regulation of Employment and Conditions of Service) Act, 1996", "version": null, "topic": "Construction worker safety context", "clause": null,
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "construction"
+      ]
+    },
+    {
+      "id": "REF-INDIA-BOCW-1996",
+      "organization": "Government of India",
+      "title": "Building and Other Construction Workers (Regulation of Employment and Conditions of Service) Act, 1996",
+      "version": null,
+      "topic": "Construction worker safety context",
+      "clause": null,
       "trainingInterpretation": "Context only for the construction world. No section numbers are cited.",
-      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT", "smeApproval": "not_approved", "industries": ["construction"] }
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "construction"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-132",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.132 — Personal protective equipment, general requirements",
+      "version": null,
+      "topic": "PPE hazard assessment and selection",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: PPE is selected for the assessed task and kept in serviceable condition. No requirements extracted.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-146",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.146 — Permit-required confined spaces",
+      "version": null,
+      "topic": "Confined space entry control",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: entry into a permit-required space is controlled and authorised. No thresholds, procedures or rescue requirements extracted.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-HSE-INDG258",
+      "organization": "Health and Safety Executive (HSE), UK",
+      "title": "INDG258 — Confined spaces: a brief guide to working safely (edition to be confirmed)",
+      "version": null,
+      "topic": "Confined space awareness",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: awareness that confined spaces need planning and authorisation before entry.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-252",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.252 — Welding, cutting and brazing: general requirements",
+      "version": null,
+      "topic": "Hot work fire prevention",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: hot work needs authorisation and fire-prevention precautions. No distances, durations or gas limits extracted.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-HSE-HSG250",
+      "organization": "Health and Safety Executive (HSE), UK",
+      "title": "HSG250 — Guidance on permit-to-work systems (edition to be confirmed)",
+      "version": null,
+      "topic": "Permit-to-work systems",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: permits define scope, location, precautions and approvals; changes need reassessment.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OISD-STD-116",
+      "organization": "Oil Industry Safety Directorate (OISD), India",
+      "title": "OISD-STD-116 (fire protection facilities — title and edition to be confirmed)",
+      "version": null,
+      "topic": "Fire protection in oil & gas facilities",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only. Applicability, title and edition must be confirmed by a qualified reviewer.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-157",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.157 — Portable fire extinguishers",
+      "version": null,
+      "topic": "Fire extinguisher provision",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: extinguishers are provided, kept available and used only by trained persons per the employer's plan.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-OSHA-1910-38",
+      "organization": "U.S. Occupational Safety and Health Administration (OSHA)",
+      "title": "29 CFR 1910.38 — Emergency action plans",
+      "version": null,
+      "topic": "Emergency action plans",
+      "clause": null,
+      "trainingInterpretation": "Conceptual link only: sites have an emergency plan covering alarms, routes, assembly and accounting for people.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-EMPLOYER-SOP",
+      "organization": "Employer (to be supplied)",
+      "title": "Employer-approved equipment inspection procedure — NOT YET SUPPLIED",
+      "version": null,
+      "topic": "Equipment inspection",
+      "clause": null,
+      "trainingInterpretation": "Placeholder that marks a content gap: no employer inspection SOP has been provided, so no inspection criteria are assessed.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    },
+    {
+      "id": "REF-DGFASLI-GUIDANCE",
+      "organization": "Directorate General Factory Advice Service & Labour Institutes (DGFASLI), India",
+      "title": "DGFASLI guidance publications — specific document to be identified",
+      "version": null,
+      "topic": "General industrial safety guidance",
+      "clause": null,
+      "trainingInterpretation": "Placeholder: the specific DGFASLI document has not been identified or verified.",
+      "verificationStatus": "UNVERIFIED — NOT FOR AUTHORITATIVE ASSESSMENT",
+      "smeApproval": "not_approved",
+      "industries": [
+        "oil_gas"
+      ]
+    }
   ]
 }

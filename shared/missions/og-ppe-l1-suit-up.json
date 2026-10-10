@@ -1,0 +1,755 @@
+{
+ "schemaVersion": 2,
+ "id": "og-ppe-l1-suit-up",
+ "version": 1,
+ "industry": "oil_gas",
+ "department": "plant_maintenance",
+ "designations": [
+  "og_mech_maint"
+ ],
+ "roleTitleKey": "mission.common.roleTrainee",
+ "designedFor": [
+  "fresher"
+ ],
+ "category": "og_ppe",
+ "level": 1,
+ "estimatedMinutes": 10,
+ "titleKey": "m.ppe1.title",
+ "subtitleKey": "m.ppe1.subtitle",
+ "descriptionKey": "m.ppe1.description",
+ "briefingKeys": [
+  "m.ppe1.briefing.1",
+  "m.ppe1.briefing.2"
+ ],
+ "assignmentKeys": {
+  "assignment": "m.ppe1.assignment.task",
+  "equipment": "m.ppe1.assignment.equipment",
+  "objective": "m.ppe1.assignment.objective",
+  "information": "m.ppe1.assignment.information"
+ },
+ "learningObjectiveKeys": [
+  "m.ppe1.objectives.1",
+  "m.ppe1.objectives.2"
+ ],
+ "debriefKeys": {
+  "success": "m.ppe1.debrief.success",
+  "critical": "m.ppe1.debrief.critical",
+  "failed": "m.ppe1.debrief.failed"
+ },
+ "ruleSet": {
+  "status": "provisional",
+  "noticeKey": "mission.common.provisionalNotice"
+ },
+ "contentReview": {
+  "status": "draft_unreviewed",
+  "translationStatus": "demonstration_only",
+  "lastModified": "2026-10-09"
+ },
+ "referenceIds": [
+  "REF-OISD-STD-154",
+  "REF-OSHA-1910-132"
+ ],
+ "safetyReferences": [],
+ "safetyReferencesNoteKey": "mission.common.noReviewedReferences",
+ "prerequisites": {
+  "missions": []
+ },
+ "scene": {
+  "id": "complex",
+  "site": "workshop",
+  "time": "day",
+  "spawn": {
+   "x": 0,
+   "z": -23,
+   "heading": 0
+  },
+  "workPoint": {
+   "x": 0,
+   "z": -5,
+   "heading": 0
+  },
+  "cinematic": {
+   "dayKey": "chapter.og_ppe.1",
+   "locationKey": "m.ppe1.location",
+   "titleKey": "m.ppe1.title"
+  },
+  "restrictedZones": [],
+  "environmentIndicators": [],
+  "props": [
+   {
+    "type": "tape",
+    "x": 0,
+    "z": 7.5,
+    "heading": 0,
+    "params": {
+     "w": 10,
+     "d": 7,
+     "color": "#ffc23d"
+    }
+   },
+   {
+    "type": "sign",
+    "x": -1.6,
+    "z": 3.6,
+    "heading": 0,
+    "params": {
+     "kind": "mandatory",
+     "text": "world.sign.ppe"
+    }
+   },
+   {
+    "type": "leak",
+    "x": 0,
+    "z": 8.0,
+    "heading": 0,
+    "params": {},
+    "state": "off"
+   },
+   {
+    "type": "toolcart",
+    "x": 3.0,
+    "z": 8.5,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "type": "crate",
+    "x": -6.5,
+    "z": -2.0,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "id": "task_card",
+    "type": "board",
+    "x": -4.0,
+    "z": -4.0,
+    "heading": 0,
+    "params": {
+     "title": "m.ppe1.prop.task_card.1",
+     "lines": [
+      "m.ppe1.prop.task_card.2",
+      "m.ppe1.prop.task_card.3",
+      "m.ppe1.prop.task_card.4"
+     ]
+    }
+   },
+   {
+    "id": "ppe_store",
+    "type": "locker",
+    "x": 3.5,
+    "z": -3.5,
+    "heading": 0,
+    "params": {}
+   },
+   {
+    "id": "strainer",
+    "type": "compressor",
+    "x": 0,
+    "z": 8.0,
+    "heading": 0,
+    "params": {
+     "tag": "S-14"
+    }
+   }
+  ],
+  "briefingNpc": "safety_officer"
+ },
+ "briefingPhase": {
+  "allowedEvents": [
+   "world_entered",
+   "zone_entered",
+   "npc_interacted",
+   "checklist_opened",
+   "hint_requested",
+   "object_inspected"
+  ]
+ },
+ "zones": [
+  {
+   "id": "zone_strainer",
+   "nameKey": "m.ppe1.zone.zone_strainer",
+   "minX": -5,
+   "maxX": 5,
+   "minZ": 4,
+   "maxZ": 11
+  }
+ ],
+ "npcs": [
+  {
+   "id": "safety_officer",
+   "nameKey": "npc.safety_officer.name",
+   "roleKey": "npc.safety_officer.role",
+   "portrait": "safety_officer",
+   "x": -3.0,
+   "z": -12.0,
+   "heading": 180,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "meet",
+     "when": {
+      "notCompleted": [
+       "meet_safety_officer"
+      ]
+     }
+    },
+    {
+     "dialogue": "revisit"
+    }
+   ]
+  }
+ ],
+ "dialogues": {
+  "meet": [
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.meet.1",
+    "mood": "friendly"
+   },
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.meet.2",
+    "mood": "neutral"
+   },
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.meet.3",
+    "mood": "serious"
+   }
+  ],
+  "revisit": [
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.revisit.1",
+    "mood": "neutral"
+   }
+  ],
+  "unsafe": [
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.unsafe.1",
+    "mood": "concerned"
+   }
+  ],
+  "correct": [
+   {
+    "speaker": "safety_officer",
+    "textKey": "m.ppe1.dlg.correct.1",
+    "mood": "pleased"
+   }
+  ]
+ },
+ "consequencePanels": {
+  "principle": {
+   "titleKey": "m.ppe1.comic.title",
+   "panelKeys": [
+    "m.ppe1.comic.p1",
+    "m.ppe1.comic.p2",
+    "m.ppe1.comic.p3"
+   ],
+   "art": [
+    "document_gap",
+    "ppe",
+    "stop_sign"
+   ]
+  }
+ },
+ "debriefRules": [
+  {
+   "when": {
+    "criticalRule": "enter_without_ppe"
+   },
+   "textKey": "m.ppe1.debrief.l1"
+  },
+  {
+   "when": {
+    "criticalRule": "skip_eye_protection"
+   },
+   "textKey": "m.ppe1.debrief.l2"
+  },
+  {
+   "when": {
+    "stepCompleted": "read_card"
+   },
+   "textKey": "m.ppe1.debrief.l3"
+  },
+  {
+   "when": {
+    "stepCompleted": "confirm"
+   },
+   "textKey": "m.ppe1.debrief.l4"
+  }
+ ],
+ "interactables": [
+  {
+   "id": "task_card",
+   "nameKey": "m.ppe1.obj.task_card.name",
+   "type": "information",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.read",
+   "detailKeys": [
+    "m.ppe1.obj.task_card.d1",
+    "m.ppe1.obj.task_card.d2",
+    "m.ppe1.obj.task_card.d3"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "ppe_store",
+   "nameKey": "m.ppe1.obj.ppe_store.name",
+   "type": "station",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.open",
+   "detailKeys": [
+    "m.ppe1.obj.ppe_store.d1"
+   ],
+   "panel": "inventory",
+   "groups": [
+    "loadout"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "strainer",
+   "nameKey": "m.ppe1.obj.strainer.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.ppe1.obj.strainer.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  }
+ ],
+ "evidence": [],
+ "decisions": [
+  {
+   "value": "confirm",
+   "labelKey": "m.ppe1.grp.loadout.confirm",
+   "group": "loadout"
+  },
+  {
+   "value": "skip_glasses",
+   "labelKey": "m.ppe1.grp.loadout.skip_glasses",
+   "group": "loadout"
+  }
+ ],
+ "decisionGroups": [
+  {
+   "id": "loadout",
+   "promptKey": "m.ppe1.grp.loadout.prompt",
+   "ui": "choice"
+  }
+ ],
+ "inventory": [
+  {
+   "id": "helmet",
+   "nameKey": "m.ppe1.item.helmet.name",
+   "icon": "helmet",
+   "detailKey": "m.ppe1.item.helmet.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "glasses",
+   "nameKey": "m.ppe1.item.glasses.name",
+   "icon": "glasses",
+   "detailKey": "m.ppe1.item.glasses.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "gloves_gen",
+   "nameKey": "m.ppe1.item.gloves_gen.name",
+   "icon": "gloves_leather",
+   "detailKey": "m.ppe1.item.gloves_gen.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "welding_mask",
+   "nameKey": "m.ppe1.item.welding_mask.name",
+   "icon": "welding_helmet",
+   "detailKey": "m.ppe1.item.welding_mask.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "harness",
+   "nameKey": "m.ppe1.item.harness.name",
+   "icon": "harness",
+   "detailKey": "m.ppe1.item.harness.detail",
+   "at": "ppe_store",
+   "defect": false
+  }
+ ],
+ "tools": [],
+ "steps": [
+  {
+   "id": "meet_safety_officer",
+   "titleKey": "story.step.meet.safety_officer",
+   "trigger": {
+    "type": "npc_interacted",
+    "target": "safety_officer"
+   },
+   "requires": [],
+   "points": 5,
+   "marker": "safety_officer",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "meet",
+   "hintKeys": [
+    "story.hint.meet.safety_officer"
+   ]
+  },
+  {
+   "id": "briefing",
+   "titleKey": "story.step.briefing",
+   "trigger": {
+    "type": "briefing_acknowledged"
+   },
+   "requires": [
+    "meet_safety_officer"
+   ],
+   "points": 5,
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "briefing",
+   "hintKeys": [
+    "story.hint.briefing"
+   ]
+  },
+  {
+   "id": "read_card",
+   "titleKey": "m.ppe1.step.read_card",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "task_card"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 10,
+   "marker": "task_card",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "documents",
+   "hintKeys": [
+    "m.ppe1.hint.read_card.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "open_store",
+   "titleKey": "m.ppe1.step.open_store",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "ppe_store"
+   },
+   "requires": [
+    "read_card"
+   ],
+   "points": 5,
+   "marker": "ppe_store",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe1.hint.open_store.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_helmet",
+   "titleKey": "m.ppe1.step.take_helmet",
+   "trigger": {
+    "type": "item_selected",
+    "target": "helmet"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 10,
+   "marker": "ppe_store",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe1.hint.take_helmet.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_glasses",
+   "titleKey": "m.ppe1.step.take_glasses",
+   "trigger": {
+    "type": "item_selected",
+    "target": "glasses"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 10,
+   "marker": "ppe_store",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe1.hint.take_glasses.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_gloves",
+   "titleKey": "m.ppe1.step.take_gloves",
+   "trigger": {
+    "type": "item_selected",
+    "target": "gloves_gen"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 10,
+   "marker": "ppe_store",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe1.hint.take_gloves.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "confirm",
+   "titleKey": "m.ppe1.step.confirm",
+   "trigger": {
+    "type": "decision_made",
+    "target": "loadout",
+    "value": "confirm"
+   },
+   "requires": [
+    "take_helmet",
+    "take_glasses",
+    "take_gloves"
+   ],
+   "points": 15,
+   "marker": "ppe_store",
+   "concept": "ppe_completeness",
+   "outOfOrder": "mistake",
+   "scene": "decision",
+   "hintKeys": [
+    "m.ppe1.hint.confirm.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.ppe1.early.confirm"
+  },
+  {
+   "id": "enter_zone",
+   "titleKey": "m.ppe1.step.enter_zone",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_strainer"
+   },
+   "requires": [
+    "confirm"
+   ],
+   "points": 10,
+   "marker": "zone_strainer",
+   "concept": "ppe_completeness",
+   "outOfOrder": "ignore",
+   "scene": "navigate",
+   "hintKeys": [
+    "m.ppe1.hint.enter_zone.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "check_strainer",
+   "titleKey": "m.ppe1.step.check_strainer",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "strainer"
+   },
+   "requires": [
+    "enter_zone"
+   ],
+   "points": 10,
+   "marker": "strainer",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "inspect",
+   "hintKeys": [
+    "m.ppe1.hint.check_strainer.1"
+   ],
+   "optional": false
+  }
+ ],
+ "criticalErrors": [
+  {
+   "id": "enter_without_ppe",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_strainer"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "ppe_completeness",
+   "explanationKey": "m.ppe1.crit.enter_without_ppe.why",
+   "missingKey": "m.ppe1.crit.enter_without_ppe.missing",
+   "dialogue": "unsafe",
+   "condition": {
+    "notCompleted": [
+     "confirm"
+    ]
+   }
+  },
+  {
+   "id": "skip_eye_protection",
+   "trigger": {
+    "type": "decision_made",
+    "target": "loadout",
+    "value": "skip_glasses"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "ppe_task_requirements",
+   "explanationKey": "m.ppe1.crit.skip_eye_protection.why",
+   "missingKey": "m.ppe1.crit.skip_eye_protection.missing",
+   "dialogue": "unsafe"
+  }
+ ],
+ "criticalPolicy": {
+  "failAfterTotal": 2
+ },
+ "mistakes": [
+  {
+   "id": "extra_welding_mask",
+   "trigger": {
+    "type": "item_selected",
+    "target": "welding_mask"
+   },
+   "kind": "advisory",
+   "feedbackKey": "m.ppe1.fb.extra_welding_mask",
+   "concept": "ppe_task_requirements"
+  },
+  {
+   "id": "extra_harness",
+   "trigger": {
+    "type": "item_selected",
+    "target": "harness"
+   },
+   "kind": "advisory",
+   "feedbackKey": "m.ppe1.fb.extra_harness",
+   "concept": "ppe_task_requirements"
+  }
+ ],
+ "worldEvents": [],
+ "variants": [
+  {
+   "id": "A",
+   "labelKey": "mission.common.variantA",
+   "overrides": {
+    "interactables": {},
+    "evidence": {}
+   }
+  }
+ ],
+ "variantPolicy": {
+  "rule": "rotate_by_attempt",
+  "order": [
+   "A"
+  ]
+ },
+ "mcq": {
+  "questionIds": [
+   "PPE1-Q1",
+   "PPE1-Q2",
+   "PPE1-Q3",
+   "PPE1-Q4"
+  ],
+  "passFraction": 0.75
+ },
+ "hints": {
+  "budget": {
+   "fresher": 99,
+   "mid": 4,
+   "senior": 2
+  },
+  "penalty": 2
+ },
+ "assistance": {
+  "fresher": {
+   "objectiveDetail": "full",
+   "worldMarkers": true,
+   "minimapMarkers": true,
+   "autoHintSeconds": 75
+  },
+  "mid": {
+   "objectiveDetail": "standard",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "senior": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  }
+ },
+ "scoring": {
+  "mistakePenalty": 5,
+  "invalidActionPenalty": 3,
+  "hintPenalty": 2,
+  "criticalPenalty": 25,
+  "masteryThreshold": 90,
+  "passThreshold": 70
+ },
+ "authoring": {
+  "language": "en",
+  "note": "Trainer-facing scenario specification. Conceptual training scenario; not an industrial SOP. All content awaits subject-matter-expert review.",
+  "workplaceLocation": "Fictional workshop yard and PPE store.",
+  "equipmentType": "Strainer S-14; PPE store with helmet, glasses, gloves, welding helmet, harness.",
+  "corePrinciple": "PPE follows the reviewed task requirements; confirm before entering the zone.",
+  "commonMisconceptions": [
+   "Short jobs need less PPE.",
+   "More PPE is always better."
+  ],
+  "criticalDecisions": [
+   "Enter zone before confirming",
+   "Skip eye protection"
+  ],
+  "assessmentCriteria": {
+   "correct": "Read card; select helmet, glasses, gloves; confirm; enter zone; check in at strainer."
+  },
+  "note2": "Task card contents are fictional teaching content, not an employer PPE assessment."
+ },
+ "report": {
+  "evidenceSteps": [
+   "read_card",
+   "take_helmet",
+   "take_glasses",
+   "take_gloves"
+  ],
+  "decisionSteps": [
+   "confirm"
+  ]
+ }
+}

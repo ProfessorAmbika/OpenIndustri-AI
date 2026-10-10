@@ -11,7 +11,8 @@ from .. import db
 from ..config import Settings
 from ..deps import CurrentUser, get_conn, get_settings_dep, require_admin, require_client_header
 from ..errors import APIError
-from ..schemas import AdminCreateTrainee
+from ..progression import DEMO_UNLOCK_KEY
+from ..schemas import AdminCreateTrainee, AdminSettingsUpdate
 from ..security import hash_password
 
 router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(require_client_header), Depends(require_admin)])
@@ -80,3 +81,29 @@ def session_detail(session_id: str, conn: sqlite3.Connection = Depends(get_conn)
     d["engine_state"] = json.loads(d["engine_state"])
     d["result"] = json.loads(d["result"]) if d["result"] else None
     return {"session": d, "events": [{**dict(e), "detail": json.loads(e["detail"] or "{}")} for e in events]}
+
+
+def _settings_out(conn: sqlite3.Connection) -> dict[str, Any]:
+    row = conn.execute(
+        "SELECT s.value, s.updated_at, u.username FROM app_settings s LEFT JOIN users u ON u.id = s.updated_by WHERE s.key = ?",
+        (DEMO_UNLOCK_KEY,),
+    ).fetchone()
+    return {
+        "demoUnlockAll": bool(row and row["value"] == "1"),
+        "updatedAt": row["updated_at"] if row else None,
+        "updatedBy": row["username"] if row else None,
+    }
+
+
+@router.get("/settings")
+def get_settings(conn: sqlite3.Connection = Depends(get_conn)) -> dict[str, Any]:
+    return _settings_out(conn)
+
+
+@router.put("/settings")
+def put_settings(body: AdminSettingsUpdate, conn: sqlite3.Connection = Depends(get_conn),
+                 admin: CurrentUser = Depends(require_admin)) -> dict[str, Any]:
+    # Demo mode only opens levels for selection; it never marks anything as passed.
+    with db.transaction(conn):
+        db.set_setting(conn, DEMO_UNLOCK_KEY, "1" if body.demoUnlockAll else "0", admin.id)
+    return _settings_out(conn)

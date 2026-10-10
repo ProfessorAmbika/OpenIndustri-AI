@@ -34,11 +34,18 @@ def test_missions_require_complete_profile(client):
 
 def test_mission_grid_states(trainee):
     grid = trainee.get("/api/missions").json()["categories"]
+    # Level 1 of every category with content is open; later levels are locked until the
+    # previous level is passed; slots without authored content are "upcoming".
+    for cat in grid:
+        for lv in cat["levels"]:
+            if lv["missionId"] is None:
+                assert lv["status"] == "upcoming"
+            elif lv["level"] == 1:
+                assert lv["status"] == "available", (cat["category"], lv)
+            else:
+                assert lv["status"] == "locked" and lv["reason"] == "previous_level", (cat["category"], lv)
     hazrec = next(c for c in grid if c["category"] == "og_hazard_recognition")
-    assert hazrec["levels"][0]["status"] == "available"
-    assert [lv["status"] for lv in hazrec["levels"][1:]] == ["upcoming"] * 4
-    others = [c for c in grid if c["category"] != "og_hazard_recognition"]
-    assert all(lv["status"] == "upcoming" for c in others for lv in c["levels"])
+    assert hazrec["levels"][0]["missionId"] == "og-hazrec-l1-silent-pump"
 
 
 def test_other_designation_cannot_see_silent_pump(trainee):

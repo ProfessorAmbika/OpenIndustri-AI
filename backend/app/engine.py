@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from .content import MissionDef, Step, Trigger
+from .content import MissionDef, RuleCondition, Step, Trigger
 
 NOT_STARTED = "NOT_STARTED"
 BRIEFING = "BRIEFING"
@@ -96,6 +96,19 @@ def _matches(trigger: Trigger, event: dict[str, Any]) -> bool:
     if trigger.targets is not None and event.get("target") not in trigger.targets:
         return False
     if trigger.value is not None and event.get("value") != trigger.value:
+        return False
+    return True
+
+
+def rule_ok(cond: RuleCondition | None, st: EngineState) -> bool:
+    """Progress guard for rules: e.g. 'entering the vessel is critical unless entry was authorised'."""
+    if cond is None:
+        return True
+    if any(c not in st.completed for c in cond.completed):
+        return False
+    if any(c in st.completed for c in cond.notCompleted):
+        return False
+    if cond.flag is not None and cond.flag not in st.flags:
         return False
     return True
 
@@ -247,9 +260,11 @@ def _process_active(mission: MissionDef, st: EngineState, event: dict[str, Any],
     if etype == "tool_used":
         c.toolUses += 1
 
-    # 1. Critical safety errors take precedence over everything else.
-    for rule in mission.criticalErrors:
-        if _matches(rule.trigger, event):
+    # 1. Critical safety errors take precedence over everything else. They are
+    #    assessed only once the trainee has been briefed (ACTIVE): before that
+    #    the assignment has not been given, so there is nothing to violate.
+    for rule in (mission.criticalErrors if st.state == ACTIVE else []):
+        if _matches(rule.trigger, event) and rule_ok(rule.condition, st):
             st.criticalCounts[rule.id] = st.criticalCounts.get(rule.id, 0) + 1
             c.criticalErrors += 1
             _add_missed(st, rule.concept)
@@ -316,7 +331,7 @@ def _process_active(mission: MissionDef, st: EngineState, event: dict[str, Any],
 
     # 4. Non-critical mistake rules.
     for rule in mission.mistakes:
-        if _matches(rule.trigger, event):
+        if _matches(rule.trigger, event) and rule_ok(rule.condition, st):
             if rule.kind == "advisory":
                 # Contextual warning only: no penalty.
                 return {"outcome": "advisory", "ruleId": rule.id, "feedbackKey": rule.feedbackKey}

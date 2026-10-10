@@ -9,7 +9,7 @@ from ..config import Settings
 from ..content import load_catalogue, load_missions, load_references
 from ..deps import CurrentUser, current_user, get_conn, get_settings_dep, require_trainee
 from ..errors import APIError
-from ..progression import mission_grid, mission_status
+from ..progression import demo_unlock_all, mission_grid, mission_status
 from .profile import load_me
 
 router = APIRouter(prefix="/api", tags=["catalogue"])
@@ -40,6 +40,7 @@ def missions(user: CurrentUser = Depends(require_trainee), conn: sqlite3.Connect
         "industry": me.profile.industry,
         "designation": me.profile.designation,
         "categories": mission_grid(conn, settings, user.id, me.profile.industry, me.profile.designation),
+        "demoUnlockAll": demo_unlock_all(conn),
     }
 
 

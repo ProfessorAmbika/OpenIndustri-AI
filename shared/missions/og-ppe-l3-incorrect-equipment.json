@@ -1,0 +1,830 @@
+{
+ "schemaVersion": 2,
+ "id": "og-ppe-l3-incorrect-equipment",
+ "version": 1,
+ "industry": "oil_gas",
+ "department": "plant_maintenance",
+ "designations": [
+  "og_mech_maint"
+ ],
+ "roleTitleKey": "mission.common.roleTrainee",
+ "designedFor": [
+  "fresher",
+  "mid"
+ ],
+ "category": "og_ppe",
+ "level": 3,
+ "estimatedMinutes": 12,
+ "titleKey": "m.ppe3.title",
+ "subtitleKey": "m.ppe3.subtitle",
+ "descriptionKey": "m.ppe3.description",
+ "briefingKeys": [
+  "m.ppe3.briefing.1",
+  "m.ppe3.briefing.2"
+ ],
+ "assignmentKeys": {
+  "assignment": "m.ppe3.assignment.task",
+  "equipment": "m.ppe3.assignment.equipment",
+  "objective": "m.ppe3.assignment.objective",
+  "information": "m.ppe3.assignment.information"
+ },
+ "learningObjectiveKeys": [
+  "m.ppe3.objectives.1",
+  "m.ppe3.objectives.2"
+ ],
+ "debriefKeys": {
+  "success": "m.ppe3.debrief.success",
+  "critical": "m.ppe3.debrief.critical",
+  "failed": "m.ppe3.debrief.failed"
+ },
+ "ruleSet": {
+  "status": "provisional",
+  "noticeKey": "mission.common.provisionalNotice"
+ },
+ "contentReview": {
+  "status": "draft_unreviewed",
+  "translationStatus": "demonstration_only",
+  "lastModified": "2026-10-09"
+ },
+ "referenceIds": [
+  "REF-OISD-STD-154",
+  "REF-OSHA-1910-132"
+ ],
+ "safetyReferences": [],
+ "safetyReferencesNoteKey": "mission.common.noReviewedReferences",
+ "prerequisites": {
+  "missions": []
+ },
+ "scene": {
+  "id": "complex",
+  "site": "utility",
+  "time": "day",
+  "spawn": {
+   "x": 0,
+   "z": -23,
+   "heading": 0
+  },
+  "workPoint": {
+   "x": 0,
+   "z": -5,
+   "heading": 0
+  },
+  "cinematic": {
+   "dayKey": "chapter.og_ppe.3",
+   "locationKey": "m.ppe3.location",
+   "titleKey": "m.ppe3.title"
+  },
+  "restrictedZones": [],
+  "environmentIndicators": [],
+  "props": [
+   {
+    "type": "tape",
+    "x": 0,
+    "z": 7.5,
+    "heading": 0,
+    "params": {
+     "w": 10,
+     "d": 7,
+     "color": "#ffc23d"
+    }
+   },
+   {
+    "type": "tank",
+    "x": -2.5,
+    "z": 8.5,
+    "heading": 0,
+    "params": {
+     "tag": "TK-31",
+     "r": 1.2,
+     "h": 3,
+     "color": "#e9eef5"
+    }
+   },
+   {
+    "type": "sign",
+    "x": 1.8,
+    "z": 3.6,
+    "heading": 0,
+    "params": {
+     "kind": "warning",
+     "text": "m.ppe3.prop.2.1"
+    }
+   },
+   {
+    "type": "hose_reel",
+    "x": -5.8,
+    "z": 5.5,
+    "heading": 90,
+    "params": {}
+   },
+   {
+    "id": "sample_point",
+    "type": "valve",
+    "x": 2.0,
+    "z": 7.5,
+    "heading": 0,
+    "params": {
+     "tag": "SP-31",
+     "wheel": "#2fbf71"
+    }
+   },
+   {
+    "id": "task_card",
+    "type": "board",
+    "x": -4.0,
+    "z": -4.0,
+    "heading": 0,
+    "params": {
+     "accent": "#ff7a1a",
+     "title": "m.ppe3.prop.task_card.1",
+     "lines": [
+      "m.ppe3.prop.task_card.2",
+      "m.ppe3.prop.task_card.3",
+      "m.ppe3.prop.task_card.4"
+     ]
+    }
+   },
+   {
+    "id": "ppe_store",
+    "type": "locker",
+    "x": 3.5,
+    "z": -3.5,
+    "heading": 0,
+    "params": {}
+   }
+  ],
+  "briefingNpc": "senior_tech"
+ },
+ "briefingPhase": {
+  "allowedEvents": [
+   "world_entered",
+   "zone_entered",
+   "npc_interacted",
+   "checklist_opened",
+   "hint_requested",
+   "object_inspected"
+  ]
+ },
+ "zones": [
+  {
+   "id": "zone_skid",
+   "nameKey": "m.ppe3.zone.zone_skid",
+   "minX": -5,
+   "maxX": 5,
+   "minZ": 4,
+   "maxZ": 11
+  }
+ ],
+ "npcs": [
+  {
+   "id": "senior_tech",
+   "nameKey": "npc.senior_tech.name",
+   "roleKey": "npc.senior_tech.role",
+   "portrait": "senior_tech",
+   "x": -3,
+   "z": -12,
+   "heading": 180,
+   "maxDistance": 3.0,
+   "talk": [
+    {
+     "dialogue": "meet",
+     "when": {
+      "notCompleted": [
+       "meet_senior_tech"
+      ]
+     }
+    },
+    {
+     "dialogue": "shortcut",
+     "when": {
+      "notCompleted": [
+       "advice"
+      ]
+     }
+    },
+    {
+     "dialogue": "joseph_ok"
+    }
+   ]
+  }
+ ],
+ "dialogues": {
+  "meet": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.meet.1",
+    "mood": "friendly"
+   }
+  ],
+  "shortcut": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.shortcut.1",
+    "mood": "neutral",
+    "choices": [
+     {
+      "labelKey": "m.ppe3.dlg.shortcut.1c1",
+      "group": "advice",
+      "value": "follow_card",
+      "next": "joseph_ok"
+     },
+     {
+      "labelKey": "m.ppe3.dlg.shortcut.1c2",
+      "group": "advice",
+      "value": "any_gloves"
+     }
+    ]
+   }
+  ],
+  "joseph_ok": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.joseph_ok.1",
+    "mood": "pleased"
+   }
+  ],
+  "revisit": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.revisit.1",
+    "mood": "neutral"
+   }
+  ],
+  "unsafe": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.unsafe.1",
+    "mood": "concerned"
+   }
+  ],
+  "correct": [
+   {
+    "speaker": "senior_tech",
+    "textKey": "m.ppe3.dlg.correct.1",
+    "mood": "pleased"
+   }
+  ]
+ },
+ "consequencePanels": {
+  "principle": {
+   "titleKey": "m.ppe3.comic.title",
+   "panelKeys": [
+    "m.ppe3.comic.p1",
+    "m.ppe3.comic.p2",
+    "m.ppe3.comic.p3"
+   ],
+   "art": [
+    "ppe",
+    "magnifier",
+    "approval"
+   ]
+  }
+ },
+ "debriefRules": [
+  {
+   "when": {
+    "criticalRule": "wrong_spec_confirmed"
+   },
+   "textKey": "m.ppe3.debrief.l1"
+  },
+  {
+   "when": {
+    "criticalRule": "enter_skid_unconfirmed"
+   },
+   "textKey": "m.ppe3.debrief.l2"
+  },
+  {
+   "when": {
+    "counterAbove": [
+     "incorrectDecisions",
+     0
+    ]
+   },
+   "textKey": "m.ppe3.debrief.l3"
+  },
+  {
+   "when": {
+    "stepCompleted": "advice"
+   },
+   "textKey": "m.ppe3.debrief.l4"
+  }
+ ],
+ "interactables": [
+  {
+   "id": "sample_point",
+   "nameKey": "m.ppe3.obj.sample_point.name",
+   "type": "equipment",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.inspect",
+   "detailKeys": [
+    "m.ppe3.obj.sample_point.d1"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "task_card",
+   "nameKey": "m.ppe3.obj.task_card.name",
+   "type": "information",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.read",
+   "detailKeys": [
+    "m.ppe3.obj.task_card.d1",
+    "m.ppe3.obj.task_card.d2"
+   ],
+   "panel": "inspect",
+   "groups": [],
+   "hiddenUntil": null,
+   "docKind": null
+  },
+  {
+   "id": "ppe_store",
+   "nameKey": "m.ppe3.obj.ppe_store.name",
+   "type": "station",
+   "actions": [
+    "inspect"
+   ],
+   "maxDistance": 3.0,
+   "promptKey": "world.prompt.open",
+   "detailKeys": [
+    "m.ppe3.obj.ppe_store.d1"
+   ],
+   "panel": "inventory",
+   "groups": [
+    "loadout"
+   ],
+   "hiddenUntil": null,
+   "docKind": null
+  }
+ ],
+ "evidence": [],
+ "decisions": [
+  {
+   "value": "follow_card",
+   "labelKey": "m.ppe3.grp.advice.follow_card",
+   "group": "advice"
+  },
+  {
+   "value": "any_gloves",
+   "labelKey": "m.ppe3.grp.advice.any_gloves",
+   "group": "advice"
+  },
+  {
+   "value": "confirm",
+   "labelKey": "m.ppe3.grp.loadout.confirm",
+   "group": "loadout"
+  },
+  {
+   "value": "thicker",
+   "labelKey": "m.ppe3.grp.loadout.thicker",
+   "group": "loadout"
+  }
+ ],
+ "decisionGroups": [
+  {
+   "id": "advice",
+   "promptKey": "m.ppe3.grp.advice.prompt",
+   "ui": "choice"
+  },
+  {
+   "id": "loadout",
+   "promptKey": "m.ppe3.grp.loadout.prompt",
+   "ui": "choice"
+  }
+ ],
+ "inventory": [
+  {
+   "id": "gloves_chem",
+   "nameKey": "m.ppe3.item.gloves_chem.name",
+   "icon": "gloves_chem",
+   "detailKey": "m.ppe3.item.gloves_chem.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "gloves_leather",
+   "nameKey": "m.ppe3.item.gloves_leather.name",
+   "icon": "gloves_leather",
+   "detailKey": "m.ppe3.item.gloves_leather.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "gloves_cotton",
+   "nameKey": "m.ppe3.item.gloves_cotton.name",
+   "icon": "gloves_cotton",
+   "detailKey": "m.ppe3.item.gloves_cotton.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "goggles",
+   "nameKey": "m.ppe3.item.goggles.name",
+   "icon": "goggles",
+   "detailKey": "m.ppe3.item.goggles.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "glasses",
+   "nameKey": "m.ppe3.item.glasses.name",
+   "icon": "glasses",
+   "detailKey": "m.ppe3.item.glasses.detail",
+   "at": "ppe_store",
+   "defect": false
+  },
+  {
+   "id": "faceshield",
+   "nameKey": "m.ppe3.item.faceshield.name",
+   "icon": "faceshield",
+   "detailKey": "m.ppe3.item.faceshield.detail",
+   "at": "ppe_store",
+   "defect": false
+  }
+ ],
+ "tools": [],
+ "steps": [
+  {
+   "id": "meet_senior_tech",
+   "titleKey": "story.step.meet.senior_tech",
+   "trigger": {
+    "type": "npc_interacted",
+    "target": "senior_tech"
+   },
+   "requires": [],
+   "points": 5,
+   "marker": "senior_tech",
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "meet",
+   "hintKeys": [
+    "story.hint.meet.senior_tech"
+   ]
+  },
+  {
+   "id": "briefing",
+   "titleKey": "story.step.briefing",
+   "trigger": {
+    "type": "briefing_acknowledged"
+   },
+   "requires": [
+    "meet_senior_tech"
+   ],
+   "points": 5,
+   "concept": "situational_awareness",
+   "outOfOrder": "ignore",
+   "scene": "briefing",
+   "hintKeys": [
+    "story.hint.briefing"
+   ]
+  },
+  {
+   "id": "advice",
+   "titleKey": "m.ppe3.step.advice",
+   "trigger": {
+    "type": "decision_made",
+    "target": "advice",
+    "value": "follow_card"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 10,
+   "marker": "senior_tech",
+   "concept": "ppe_specification",
+   "outOfOrder": "ignore",
+   "scene": "communicate",
+   "hintKeys": [
+    "m.ppe3.hint.advice.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "read_card",
+   "titleKey": "m.ppe3.step.read_card",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "task_card"
+   },
+   "requires": [
+    "briefing"
+   ],
+   "points": 10,
+   "marker": "task_card",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "documents",
+   "hintKeys": [
+    "m.ppe3.hint.read_card.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "open_store",
+   "titleKey": "m.ppe3.step.open_store",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "ppe_store"
+   },
+   "requires": [
+    "read_card"
+   ],
+   "points": 5,
+   "marker": "ppe_store",
+   "concept": "ppe_specification",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe3.hint.open_store.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_gloves",
+   "titleKey": "m.ppe3.step.take_gloves",
+   "trigger": {
+    "type": "item_selected",
+    "target": "gloves_chem"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 15,
+   "marker": "ppe_store",
+   "concept": "ppe_specification",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe3.hint.take_gloves.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_goggles",
+   "titleKey": "m.ppe3.step.take_goggles",
+   "trigger": {
+    "type": "item_selected",
+    "target": "goggles"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 10,
+   "marker": "ppe_store",
+   "concept": "ppe_specification",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe3.hint.take_goggles.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "take_shield",
+   "titleKey": "m.ppe3.step.take_shield",
+   "trigger": {
+    "type": "item_selected",
+    "target": "faceshield"
+   },
+   "requires": [
+    "open_store"
+   ],
+   "points": 10,
+   "marker": "ppe_store",
+   "concept": "ppe_task_requirements",
+   "outOfOrder": "ignore",
+   "scene": "ppe",
+   "hintKeys": [
+    "m.ppe3.hint.take_shield.1"
+   ],
+   "optional": false
+  },
+  {
+   "id": "confirm",
+   "titleKey": "m.ppe3.step.confirm",
+   "trigger": {
+    "type": "decision_made",
+    "target": "loadout",
+    "value": "confirm"
+   },
+   "requires": [
+    "take_gloves",
+    "take_goggles",
+    "take_shield",
+    "advice"
+   ],
+   "points": 15,
+   "marker": "ppe_store",
+   "concept": "ppe_specification",
+   "outOfOrder": "mistake",
+   "scene": "decision",
+   "hintKeys": [
+    "m.ppe3.hint.confirm.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.ppe3.early.confirm"
+  },
+  {
+   "id": "go_sample",
+   "titleKey": "m.ppe3.step.go_sample",
+   "trigger": {
+    "type": "object_inspected",
+    "target": "sample_point"
+   },
+   "requires": [
+    "confirm"
+   ],
+   "points": 10,
+   "marker": "sample_point",
+   "concept": "situational_awareness",
+   "outOfOrder": "mistake",
+   "scene": "inspect",
+   "hintKeys": [
+    "m.ppe3.hint.go_sample.1"
+   ],
+   "optional": false,
+   "outOfOrderKey": "m.ppe3.early.go_sample"
+  }
+ ],
+ "criticalErrors": [
+  {
+   "id": "wrong_spec_confirmed",
+   "trigger": {
+    "type": "decision_made",
+    "target": "loadout",
+    "value": "thicker"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "ppe_specification",
+   "explanationKey": "m.ppe3.crit.wrong_spec_confirmed.why",
+   "missingKey": "m.ppe3.crit.wrong_spec_confirmed.missing",
+   "dialogue": "unsafe"
+  },
+  {
+   "id": "enter_skid_unconfirmed",
+   "trigger": {
+    "type": "zone_entered",
+    "target": "zone_skid"
+   },
+   "response": "block",
+   "setsFlag": "unsafe_attempt",
+   "concept": "ppe_completeness",
+   "explanationKey": "m.ppe3.crit.enter_skid_unconfirmed.why",
+   "missingKey": "m.ppe3.crit.enter_skid_unconfirmed.missing",
+   "dialogue": "unsafe",
+   "condition": {
+    "notCompleted": [
+     "confirm"
+    ]
+   }
+  }
+ ],
+ "criticalPolicy": {
+  "failAfterTotal": 2
+ },
+ "mistakes": [
+  {
+   "id": "wrong_gloves_leather",
+   "trigger": {
+    "type": "item_selected",
+    "target": "gloves_leather"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.ppe3.fb.wrong_gloves_leather",
+   "concept": "ppe_specification"
+  },
+  {
+   "id": "wrong_gloves_cotton",
+   "trigger": {
+    "type": "item_selected",
+    "target": "gloves_cotton"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.ppe3.fb.wrong_gloves_cotton",
+   "concept": "ppe_specification"
+  },
+  {
+   "id": "wrong_glasses",
+   "trigger": {
+    "type": "item_selected",
+    "target": "glasses"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.ppe3.fb.wrong_glasses",
+   "concept": "ppe_specification"
+  },
+  {
+   "id": "any_gloves",
+   "trigger": {
+    "type": "decision_made",
+    "target": "advice",
+    "value": "any_gloves"
+   },
+   "kind": "incorrect_decision",
+   "feedbackKey": "m.ppe3.fb.any_gloves",
+   "concept": "ppe_specification"
+  }
+ ],
+ "worldEvents": [],
+ "variants": [
+  {
+   "id": "A",
+   "labelKey": "mission.common.variantA",
+   "overrides": {
+    "interactables": {},
+    "evidence": {}
+   }
+  }
+ ],
+ "variantPolicy": {
+  "rule": "rotate_by_attempt",
+  "order": [
+   "A"
+  ]
+ },
+ "mcq": {
+  "questionIds": [
+   "PPE3-Q1",
+   "PPE3-Q2",
+   "PPE3-Q3",
+   "PPE3-Q4"
+  ],
+  "passFraction": 0.75
+ },
+ "hints": {
+  "budget": {
+   "fresher": 6,
+   "mid": 3,
+   "senior": 1
+  },
+  "penalty": 2
+ },
+ "assistance": {
+  "fresher": {
+   "objectiveDetail": "full",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": 120
+  },
+  "mid": {
+   "objectiveDetail": "standard",
+   "worldMarkers": false,
+   "minimapMarkers": true,
+   "autoHintSeconds": null
+  },
+  "senior": {
+   "objectiveDetail": "minimal",
+   "worldMarkers": false,
+   "minimapMarkers": false,
+   "autoHintSeconds": null
+  }
+ },
+ "scoring": {
+  "mistakePenalty": 5,
+  "invalidActionPenalty": 3,
+  "hintPenalty": 2,
+  "criticalPenalty": 25,
+  "masteryThreshold": 90,
+  "passThreshold": 70
+ },
+ "authoring": {
+  "language": "en",
+  "note": "Trainer-facing scenario specification. Conceptual training scenario; not an industrial SOP. All content awaits subject-matter-expert review.",
+  "workplaceLocation": "Fictional caustic dosing skid.",
+  "corePrinciple": "Similar-looking PPE can have different specifications; match the task card's specification.",
+  "commonMisconceptions": [
+   "Gloves are gloves.",
+   "Thicker means safer.",
+   "A face shield replaces goggles."
+  ],
+  "criticalDecisions": [
+   "Confirm leather gloves",
+   "Enter the skid before confirming"
+  ],
+  "assessmentCriteria": {
+   "correct": "Answer Joseph by the card; select chemical gloves, goggles, face shield; confirm; go to sample point."
+  },
+  "note2": "No chemical name, concentration or glove material standard is specified; labels are fictional."
+ },
+ "report": {
+  "evidenceSteps": [
+   "read_card",
+   "take_gloves",
+   "take_goggles",
+   "take_shield"
+  ],
+  "decisionSteps": [
+   "advice",
+   "confirm"
+  ]
+ }
+}

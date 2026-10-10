@@ -22,6 +22,7 @@ EVENT_TYPES = (
     "checklist_opened",
     "evidence_flagged",
     "decision_made",
+    "item_selected",
     "hint_requested",
     "block_acknowledged",
     "paused",
@@ -38,6 +39,7 @@ EventType = Literal[
     "checklist_opened",
     "evidence_flagged",
     "decision_made",
+    "item_selected",
     "hint_requested",
     "block_acknowledged",
     "paused",
@@ -119,6 +121,13 @@ class Condition(_Strict):
     pathway: Pathway | None = None
 
 
+class RuleCondition(_Strict):
+    """Progress-dependent guard for critical/mistake rules, talk rules and world events."""
+    completed: list[str] = []
+    notCompleted: list[str] = []
+    flag: str | None = None
+
+
 class Step(_Strict):
     id: str
     titleKey: str
@@ -144,6 +153,7 @@ class CriticalError(_Strict):
     explanationKey: str
     missingKey: str
     dialogue: str | None = None
+    condition: RuleCondition | None = None
 
 
 class CriticalPolicy(_Strict):
@@ -156,6 +166,7 @@ class MistakeRule(_Strict):
     kind: Literal["incorrect_decision", "invalid_action", "advisory"]
     feedbackKey: str
     concept: str
+    condition: RuleCondition | None = None
 
 
 class Interactable(_Strict):
@@ -166,6 +177,11 @@ class Interactable(_Strict):
     maxDistance: float = Field(gt=0, le=10)
     promptKey: str
     detailKeys: list[str]
+    # Which in-game interface opens for this object (mission-specific UIs).
+    panel: Literal["inspect", "station", "document", "inventory", "comms", "route"] = "inspect"
+    groups: list[str] = []
+    hiddenUntil: str | None = None
+    docKind: Literal["permit", "record", "plan", "notice", "log"] | None = None
 
 
 class Zone(_Strict):
@@ -182,11 +198,30 @@ class Evidence(_Strict):
     labelKey: str
     statusKey: str
     complete: bool
+    doc: str | None = None
+
+
+class InventoryItem(_Strict):
+    id: str
+    nameKey: str
+    icon: str
+    detailKey: str
+    at: str
+    defect: bool = False
+
+
+class DecisionGroup(_Strict):
+    id: str
+    promptKey: str
+    ui: Literal["choice", "comms", "route"] = "choice"
 
 
 class Decision(_Strict):
     value: str
     labelKey: str
+    group: str | None = None
+    descKey: str | None = None
+    route: list[tuple[float, float]] | None = None
 
 
 class Tool(_Strict):
@@ -230,16 +265,54 @@ class Cinematic(_Strict):
     titleKey: str
 
 
+class Prop(_Strict):
+    """A placed world object. `id` links it to an interactable (its anchor)."""
+    id: str | None = None
+    type: str
+    x: float
+    z: float
+    heading: float = 0
+    state: str | None = None
+    params: dict = {}
+
+
 class SceneConfig(_Strict):
-    id: Literal["petrochem", "factory", "construction"]
+    id: Literal["petrochem", "complex", "factory", "construction"]
     spawn: Spawn
     cinematic: Cinematic | None = None
     restrictedZones: list[str] = []
     environmentIndicators: list[dict] = []
+    site: str | None = None
+    time: Literal["day", "dusk", "night", "overcast"] = "day"
+    workPoint: Spawn | None = None
+    briefingNpc: str | None = None
+    props: list[Prop] = []
+
+
+WORLD_ACTIONS = ("prop_state", "dialogue", "banner", "sound", "details")
+
+
+class WorldEvent(_Strict):
+    """Pre-authored, deterministic scenario change. Presentation only: the
+    engine state that triggers it is already authoritative."""
+    id: str
+    when: RuleCondition
+    delay: float = Field(default=0, ge=0, le=30)
+    actions: list[dict] = Field(min_length=1)
+
+
+class Report(_Strict):
+    evidenceSteps: list[str] = []
+    decisionSteps: list[str] = []
 
 
 class BriefingPhase(_Strict):
     allowedEvents: list[EventType] = []
+
+
+class TalkRule(_Strict):
+    when: RuleCondition | None = None
+    dialogue: str
 
 
 class Npc(_Strict):
@@ -251,17 +324,28 @@ class Npc(_Strict):
     z: float
     heading: float
     maxDistance: float = Field(gt=0, le=10)
+    talk: list[TalkRule] = []
+    hiddenUntil: str | None = None
+
+
+class DialogueChoice(_Strict):
+    labelKey: str
+    group: str
+    value: str
+    next: str | None = None
 
 
 class DialogueLine(_Strict):
     speaker: str
     textKey: str
     mood: Literal["friendly", "neutral", "serious", "concerned", "pleased"]
+    choices: list[DialogueChoice] = []
 
 
 class ComicPanel(_Strict):
     titleKey: str
     panelKeys: list[str] = Field(min_length=1)
+    art: list[str] = []
 
 
 class DebriefCondition(_Strict):
@@ -372,6 +456,10 @@ class MissionDef(_Strict):
     assistance: dict[Experience, AssistanceProfile]
     scoring: Scoring
     authoring: dict
+    decisionGroups: list[DecisionGroup] = []
+    inventory: list[InventoryItem] = []
+    worldEvents: list[WorldEvent] = []
+    report: Report | None = None
 
     @model_validator(mode="after")
     def _cross_refs(self) -> "MissionDef":
@@ -399,7 +487,7 @@ class MissionDef(_Strict):
             if not lines:
                 raise ValueError(f"dialogue {name} is empty")
             for ln in lines:
-                if ln.speaker not in npc_ids:
+                if ln.speaker not in npc_ids and ln.speaker != "self":
                     raise ValueError(f"dialogue {name} uses unknown speaker {ln.speaker}")
         for c in self.criticalErrors:
             if c.dialogue and c.dialogue not in self.dialogues:
@@ -427,11 +515,7 @@ class MissionDef(_Strict):
                 raise ValueError(f"variant {v.id} overrides unknown interactables")
             if set(v.overrides.evidence) - ev_ids:
                 raise ValueError(f"variant {v.id} overrides unknown evidence")
-        # The decision step's correct value and the critical decisions must be declared decisions.
-        decision_values = {d.value for d in self.decisions}
-        for t in [s.trigger for s in self.steps] + [c.trigger for c in self.criticalErrors]:
-            if t.type == "decision_made" and t.value not in decision_values:
-                raise ValueError(f"decision value {t.value} is not declared")
+        self._check_decisions()
         # Every incomplete evidence item must be the target of a step (otherwise it can never be identified).
         flag_targets = {s.trigger.target for s in self.steps if s.trigger.type == "evidence_flagged"}
         for e in self.evidence:
@@ -439,7 +523,110 @@ class MissionDef(_Strict):
                 raise ValueError(f"incomplete evidence {e.id} has no identifying step")
             if e.complete and e.id in flag_targets:
                 raise ValueError(f"evidence {e.id} is complete but rewarded when flagged")
+            if e.doc is not None and e.doc not in inter_ids:
+                raise ValueError(f"evidence {e.id} is shown on unknown object {e.doc}")
+        for item in self.inventory:
+            if item.at not in inter_ids:
+                raise ValueError(f"inventory item {item.id} is stored at unknown object {item.at}")
+            if item.defect and item.id not in flag_targets:
+                raise ValueError(f"defective item {item.id} has no identifying step")
+            if not item.defect and item.id in flag_targets:
+                raise ValueError(f"item {item.id} is not defective but rewarded when flagged")
+        group_ids = {g.id for g in self.decisionGroups}
+        for it in self.interactables:
+            if set(it.groups) - group_ids:
+                raise ValueError(f"object {it.id} shows unknown decision groups")
+            if it.hiddenUntil is not None and it.hiddenUntil not in step_set:
+                raise ValueError(f"object {it.id} is hidden until unknown step {it.hiddenUntil}")
+        for n in self.npcs:
+            if n.hiddenUntil is not None and n.hiddenUntil not in step_set:
+                raise ValueError(f"npc {n.id} is hidden until unknown step {n.hiddenUntil}")
+        self._check_hidden_reachability()
+        for name, lines in self.dialogues.items():
+            for ln in lines:
+                for ch in ln.choices:
+                    if not any(d.group == ch.group and d.value == ch.value for d in self.decisions):
+                        raise ValueError(f"dialogue {name} offers undeclared decision {ch.group}:{ch.value}")
+                    if ch.next is not None and ch.next not in self.dialogues:
+                        raise ValueError(f"dialogue {name} continues with unknown dialogue {ch.next}")
+        conds = [c.condition for c in self.criticalErrors] + [m.condition for m in self.mistakes]
+        conds += [r.when for n in self.npcs for r in n.talk] + [w.when for w in self.worldEvents]
+        for c in conds:
+            if c is not None and (set(c.completed) | set(c.notCompleted)) - step_set:
+                raise ValueError("rule condition references unknown steps")
+        for n in self.npcs:
+            for r in n.talk:
+                if r.dialogue not in self.dialogues:
+                    raise ValueError(f"npc {n.id} talk rule uses unknown dialogue {r.dialogue}")
+        self._check_world_events(inter_ids)
+        if self.scene.id == "complex":
+            prop_ids = {p.id for p in self.scene.props if p.id}
+            missing = inter_ids - prop_ids
+            if missing:
+                raise ValueError(f"objects without a placed world prop: {sorted(missing)}")
+            if self.scene.briefingNpc is not None and self.scene.briefingNpc not in npc_ids:
+                raise ValueError("briefingNpc is not an NPC of this mission")
+        if self.report is not None:
+            if (set(self.report.evidenceSteps) | set(self.report.decisionSteps)) - step_set:
+                raise ValueError("report references unknown steps")
         return self
+
+    def _check_decisions(self) -> None:
+        group_ids = [g.id for g in self.decisionGroups]
+        if len(set(group_ids)) != len(group_ids):
+            raise ValueError("duplicate decision group ids")
+        seen: set[tuple[str | None, str]] = set()
+        for d in self.decisions:
+            if d.group is not None and d.group not in group_ids:
+                raise ValueError(f"decision {d.value} uses unknown group {d.group}")
+            if (d.group, d.value) in seen:
+                raise ValueError(f"duplicate decision {d.group}:{d.value}")
+            seen.add((d.group, d.value))
+        for g in group_ids:
+            if sum(1 for d in self.decisions if d.group == g) < 2:
+                raise ValueError(f"decision group {g} needs at least two options")
+        # Decision triggers must name a declared option (target = group, or no group for legacy missions).
+        for t in [s.trigger for s in self.steps] + [c.trigger for c in self.criticalErrors] + [m.trigger for m in self.mistakes]:
+            if t.type != "decision_made" or t.value is None:
+                continue
+            if (t.target, t.value) not in seen:
+                raise ValueError(f"decision value {t.target}:{t.value} is not declared")
+
+    def _check_hidden_reachability(self) -> None:
+        """A step that targets a hidden object must (transitively) require the step that reveals it."""
+        hidden = {i.id: i.hiddenUntil for i in self.interactables if i.hiddenUntil}
+        hidden.update({n.id: n.hiddenUntil for n in self.npcs if n.hiddenUntil})
+        by_id = {s.id: s for s in self.steps}
+
+        def ancestors(sid: str) -> set[str]:
+            out: set[str] = set()
+            stack = list(by_id[sid].requires)
+            while stack:
+                n = stack.pop()
+                if n not in out:
+                    out.add(n)
+                    stack.extend(by_id[n].requires)
+            return out
+
+        for s in self.steps:
+            for tgt in ([s.trigger.target] if s.trigger.target else []) + (s.trigger.targets or []):
+                reveal = hidden.get(tgt)
+                if reveal and reveal != s.id and reveal not in ancestors(s.id):
+                    raise ValueError(f"step {s.id} targets {tgt} before it is revealed by {reveal}")
+
+    def _check_world_events(self, inter_ids: set[str]) -> None:
+        prop_ids = {p.id for p in self.scene.props if p.id} | {p.params.get("key") for p in self.scene.props if p.params.get("key")}
+        for w in self.worldEvents:
+            for a in w.actions:
+                kind = a.get("type")
+                if kind not in WORLD_ACTIONS:
+                    raise ValueError(f"world event {w.id} has unknown action {kind}")
+                if kind == "prop_state" and a.get("prop") not in prop_ids:
+                    raise ValueError(f"world event {w.id} changes unknown prop {a.get('prop')}")
+                if kind == "dialogue" and a.get("name") not in self.dialogues:
+                    raise ValueError(f"world event {w.id} plays unknown dialogue {a.get('name')}")
+                if kind == "details" and a.get("object") not in inter_ids:
+                    raise ValueError(f"world event {w.id} changes unknown object {a.get('object')}")
 
     def _check_acyclic(self) -> None:
         graph = {s.id: s.requires for s in self.steps}
@@ -466,6 +653,8 @@ class MissionDef(_Strict):
             | {z.id for z in self.zones}
             | {i.id for i in self.interactables}
             | {e.id for e in self.evidence}
+            | {i.id for i in self.inventory}
+            | {g.id for g in self.decisionGroups}
         )
 
 
@@ -557,8 +746,17 @@ class ReferenceRegistry(_Strict):
 
 @lru_cache(maxsize=4)
 def load_questions(shared_dir: Path) -> dict[str, Question]:
-    bank = QuestionBank.model_validate(_read_json(shared_dir / "content" / "questions.json")[0])
-    return {q.id: q for q in bank.questions}
+    out: dict[str, Question] = {}
+    for name in ("questions.json", "questions.generated.json"):
+        path = shared_dir / "content" / name
+        if not path.exists():
+            continue
+        bank = QuestionBank.model_validate(_read_json(path)[0])
+        for q in bank.questions:
+            if q.id in out:
+                raise ValueError(f"duplicate question id {q.id}")
+            out[q.id] = q
+    return out
 
 
 @lru_cache(maxsize=4)

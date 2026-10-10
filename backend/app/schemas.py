@@ -133,3 +133,7 @@ class McqSubmission(_In):
             if not re.fullmatch(r"[A-Za-z0-9_\-]{1,32}", k) or not re.fullmatch(r"[a-z0-9_]{1,16}", val):
                 raise ValueError("invalid answer format")
         return v
+
+
+class AdminSettingsUpdate(_In):
+    demoUnlockAll: bool
